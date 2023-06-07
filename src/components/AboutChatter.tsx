@@ -6,7 +6,11 @@ import React from 'react';
 export const AboutChatter = () => {
   return (
     <Box w="100vw" display="flex" justifyContent="center" my="5rem">
-      <Flex w={{ base: '85%', lg: '90%', '2xl': '60%' }} flexDir={{ base: 'column' }} gap="5.25rem">
+      <Flex
+        w={{ base: '85%', lg: '90%', '2xl': '60%' }}
+        flexDir={{ base: 'column', lg: 'row' }}
+        gap="5.25rem"
+      >
         <VStack gap="2rem" alignItems="left">
           <Text
             fontSize={{ base: '2rem', lg: '3rem' }}
