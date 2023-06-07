@@ -10,11 +10,16 @@ export const WhyJoinChatter = () => {
     <Box w="100vw" display="flex" justifyContent="center" my="5rem">
       <VStack gap="3.375rem" w={{ base: '85%', lg: '65rem' }}>
         <VStack gap="1.5rem">
-          <Text fontSize="3rem" fontWeight="700" lineHeight="4.5rem">
+          <Text fontSize={{ base: '1.6rem', lg: '3rem' }} fontWeight="700" lineHeight="4.5rem">
             Why you should join chatter
           </Text>
 
-          <Text fontSize="1rem" lineHeight="1.688rem" fontWeight="400" w="58rem">
+          <Text
+            fontSize="1rem"
+            lineHeight="1.688rem"
+            fontWeight="400"
+            w={{ base: '22.6rem', lg: '58rem' }}
+          >
             Our goal is to make writers and readers see our platform as their next heaven for
             blogging, ensuring ease in interactions, connecting with like-minded peers, have access
             to favorite content based on interests and able to communicate your great ideas with
