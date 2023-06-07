@@ -37,7 +37,7 @@ const NavBar = () => {
   return (
     <Box width="100vw" display="flex" justifyContent="center">
       <HStack
-        w={{ base: '100%', sm: '100%', md: '100%', lg: '90%', xl: '90%', '2xl': '60%' }}
+        w={{ base: '90%', lg: '90%', xl: '90%', '2xl': '60%' }}
         height="98px"
         alignItems="center"
         justifyContent="space-between"
