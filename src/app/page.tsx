@@ -1,5 +1,6 @@
 'use client';
 
+import { AboutChatter } from '@/components/AboutChatter';
 import { Hero } from '@/components/Hero';
 import NavBar from '@/components/NavBar';
 
@@ -8,6 +9,7 @@ export default function Home() {
     <main>
       <NavBar />
       <Hero />
+      <AboutChatter />
     </main>
   );
 }
