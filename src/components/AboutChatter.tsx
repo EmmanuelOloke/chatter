@@ -21,7 +21,7 @@ export const AboutChatter = () => {
             About Chatter
           </Text>
           <Text
-            fontSize={{ base: '0.8rem', lg: '1rem' }}
+            fontSize="1rem"
             fontWeight="400"
             lineHeight="1.688rem"
             w={{ base: '22rem', lg: '39rem' }}
