@@ -1,7 +1,7 @@
 export const whyJoinChatterCards = [
   {
     id: 1,
-    cardIcon: './images/icons/analytics.svg',
+    cardIcon: './assets/icons/analytics.svg',
     cardIconAlt: 'analytics icon',
     cardTitle: 'Analytics',
     cardText:
@@ -9,7 +9,7 @@ export const whyJoinChatterCards = [
   },
   {
     id: 2,
-    cardIcon: './images/icons/social-interaction.svg',
+    cardIcon: './assets/icons/social-interaction.svg',
     cardIconAlt: 'social interaction icon',
     cardTitle: 'Social Interactions',
     cardText:
@@ -17,7 +17,7 @@ export const whyJoinChatterCards = [
   },
   {
     id: 3,
-    cardIcon: './images/icons/content-creation.svg',
+    cardIcon: './assets/icons/content-creation.svg',
     cardIconAlt: 'content creation icon',
     cardTitle: 'Content Creation',
     cardText: 'Write nice and appealing with our in-built markdown, a rich text editor',
