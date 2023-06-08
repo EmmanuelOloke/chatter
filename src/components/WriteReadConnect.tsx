@@ -10,7 +10,6 @@ export const WriteReadConnect = () => {
         gap={{ base: '3rem', lg: '7.5rem' }}
         w={{ base: '85%', lg: '80%', '2xl': '60%' }}
         flexDir={{ base: 'column', lg: 'row' }}
-        justifyContent={{ base: 'center' }}
       >
         <Box w={{ lg: '22rem' }} margin="0 auto">
           <HStack gap="2.5rem" alignItems="center">
@@ -23,11 +22,7 @@ export const WriteReadConnect = () => {
           </HStack>
         </Box>
 
-        <VStack
-          gap="2rem"
-          alignItems={{ base: 'center', lg: 'left' }}
-          w={{ base: '23rem', lg: '40rem' }}
-        >
+        <Flex gap="2rem" flexDir="column" w={{ base: '23rem', lg: '40rem' }}>
           <VStack gap="1rem">
             <Text
               fontSize={{ base: '1.5rem', lg: '2.9rem' }}
@@ -43,18 +38,20 @@ export const WriteReadConnect = () => {
             </Text>
           </VStack>
 
-          <Button
-            variant="solid"
-            backgroundColor="#543EE0"
-            color="#FFF"
-            size="lg"
-            width="9rem"
-            height="3rem"
-            _hover={{ backgroundColor: '#7a67f4' }}
-          >
-            Get Started
-          </Button>
-        </VStack>
+          <Flex justifyContent={{ base: 'center', lg: 'left' }}>
+            <Button
+              variant="solid"
+              backgroundColor="#543EE0"
+              color="#FFF"
+              size="lg"
+              width="9rem"
+              height="3rem"
+              _hover={{ backgroundColor: '#7a67f4' }}
+            >
+              Get Started
+            </Button>
+          </Flex>
+        </Flex>
       </Flex>
     </Box>
   );
