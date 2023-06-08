@@ -13,7 +13,7 @@ export const Testimonial = () => {
         align={{ base: 'center', lg: 'left' }}
       >
         <Image
-          src="./images/adebola-muhydeen.jpeg"
+          src="./assets/images/landing-page-images/testimonial/adebola-muhydeen.jpeg"
           alt="Adebola Muhydeen"
           borderRadius="50%"
           w="17rem"
