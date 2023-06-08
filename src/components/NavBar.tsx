@@ -93,29 +93,33 @@ const NavBar = () => {
         </HStack>
 
         <HStack gap="1.5rem" display={invisibleOnMobile}>
-          <Button
-            color="#111"
-            borderColor="#543EE0"
-            variant="outline"
-            size="lg"
-            width="9rem"
-            height="3rem"
-            _hover={{ backgroundColor: '#f0eeff' }}
-          >
-            Log in
-          </Button>
+          <NextLink href="/signup" passHref>
+            <Button
+              color="#111"
+              borderColor="#543EE0"
+              variant="outline"
+              size="lg"
+              width="9rem"
+              height="3rem"
+              _hover={{ backgroundColor: '#f0eeff' }}
+            >
+              Log in
+            </Button>
+          </NextLink>
 
-          <Button
-            variant="solid"
-            backgroundColor="#543EE0"
-            color="#FFF"
-            size="lg"
-            width="9rem"
-            height="3rem"
-            _hover={{ backgroundColor: '#7a67f4' }}
-          >
-            Sign up
-          </Button>
+          <NextLink href="/signup" passHref>
+            <Button
+              variant="solid"
+              backgroundColor="#543EE0"
+              color="#FFF"
+              size="lg"
+              width="9rem"
+              height="3rem"
+              _hover={{ backgroundColor: '#7a67f4' }}
+            >
+              Sign up
+            </Button>
+          </NextLink>
         </HStack>
 
         <Box
