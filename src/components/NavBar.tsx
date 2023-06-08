@@ -19,7 +19,7 @@ import {
 import NextLink from 'next/link';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
-import chatterLogo from '../../public/images/chatter.png';
+import chatterLogo from '../../public/assets/images/logo/chatter.png';
 
 const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

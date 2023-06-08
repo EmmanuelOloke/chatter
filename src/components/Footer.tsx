@@ -4,7 +4,7 @@ import React from 'react';
 import { Box, Flex, Image, Link, Text, VStack } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import chatterLogo from '../../public/images/chatter.png';
+import chatterLogo from '../../public/assets/images/logo/chatter.png';
 
 export const Footer = () => {
   return (
