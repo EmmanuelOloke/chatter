@@ -8,7 +8,7 @@ export const Hero = () => {
     <Flex
       h={{ base: '47rem', '2xl': '64rem' }}
       w={{ base: '100vw', lg: '90rem', '2xl': '100vw' }}
-      background={`linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('/images/chatter-hero.jpeg')`}
+      background={`linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('/assets/images/landing-page-images/hero/chatter-hero.jpeg')`}
       bgSize="cover"
       bgRepeat="no-repeat"
       bgPosition={{ base: 'left', lg: 'center' }}
