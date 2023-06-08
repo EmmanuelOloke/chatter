@@ -37,7 +37,7 @@ export const AboutChatter = () => {
 
         <Box>
           <Image
-            src="./images/about-chatter.jpeg"
+            src="./assets/images/landing-page-images/about/about-chatter.jpeg"
             alt="young people reading in a theatre"
             borderRadius="0.5rem"
           />
