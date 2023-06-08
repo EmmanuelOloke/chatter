@@ -14,11 +14,15 @@ export const WriteReadConnect = () => {
         <Box w={{ lg: '22rem' }} margin="0 auto">
           <HStack gap="2.5rem" alignItems="center">
             <VStack gap="6rem">
-              <Avatar size="2xl" name="a human female" src="./images/avatar1.jpeg" />
-              <Avatar size="2xl" name="a middle-aged human male" src="./images/avatar2.jpeg" />
+              <Avatar size="2xl" name="a human female" src="./assets/avatars/avatar1.jpeg" />
+              <Avatar
+                size="2xl"
+                name="a middle-aged human male"
+                src="./assets/avatars/avatar2.jpeg"
+              />
             </VStack>
 
-            <Avatar size="2xl" name="a young human male" src="./images/avatar3.jpeg" />
+            <Avatar size="2xl" name="a young human male" src="./assets/avatars/avatar3.jpeg" />
           </HStack>
         </Box>
 
