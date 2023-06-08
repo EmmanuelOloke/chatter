@@ -10,7 +10,6 @@ export const Hero = () => {
       w={{ base: '100vw', lg: '90rem', '2xl': '100vw' }}
       background={`linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('/assets/images/landing-page-images/hero/chatter-hero.jpeg')`}
       bgSize="cover"
-      bgRepeat="no-repeat"
       bgPosition={{ base: 'left', lg: 'center' }}
       justifyContent="center"
       alignItems="center"
