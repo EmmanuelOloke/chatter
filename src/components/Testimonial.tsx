@@ -19,12 +19,8 @@ export const Testimonial = () => {
           w="17rem"
         />
 
-        <VStack
-          gap="1.5rem"
-          w={{ base: '22rem', lg: '53rem' }}
-          align={{ base: 'center', lg: 'left' }}
-        >
-          <VStack gap="3rem">
+        <Flex gap="1.5rem" w={{ base: '22rem', lg: '53rem' }} flexDir="column">
+          <Flex flexDir="column" gap="3rem">
             <Text fontWeight="400" fontSize="1rem" lineHeight="1.6rem">
               <q>
                 Chatter has become an integral part of my online experience. As a user of this
@@ -33,26 +29,30 @@ export const Testimonial = () => {
               </q>
             </Text>
 
-            <Box fontSize="1.5rem" fontWeight="500">
-              Adebobola Muhydeen,{' '}
-              <Text display={{ base: 'block', lg: 'inline' }} fontSize="1rem" fontWeight="400">
-                Software developer at Apple
-              </Text>
-            </Box>
-          </VStack>
+            <Flex flexDir={{ base: 'column' }} alignItems={{ base: 'center', lg: 'flex-start' }}>
+              <Box fontSize="1.5rem" fontWeight="500">
+                Adebobola Muhydeen,{' '}
+                <Text display={{ lg: 'inline' }} fontSize="1rem" fontWeight="400">
+                  Software developer at Apple
+                </Text>
+              </Box>
+            </Flex>
+          </Flex>
 
-          <Button
-            variant="solid"
-            backgroundColor="#543EE0"
-            color="#FFF"
-            size="lg"
-            width="9rem"
-            height="3rem"
-            _hover={{ backgroundColor: '#7a67f4' }}
-          >
-            Join Chatter
-          </Button>
-        </VStack>
+          <Flex justifyContent={{ base: 'center', lg: 'flex-start' }}>
+            <Button
+              variant="solid"
+              backgroundColor="#543EE0"
+              color="#FFF"
+              size="lg"
+              width="9rem"
+              height="3rem"
+              _hover={{ backgroundColor: '#7a67f4' }}
+            >
+              Join Chatter
+            </Button>
+          </Flex>
+        </Flex>
       </VStack>
     </Box>
   );
