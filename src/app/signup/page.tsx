@@ -51,7 +51,7 @@ const Signup = () => {
               lineHeight="2.25rem"
               w="90%"
             >
-              Unleash the Power of Words, Connect with Like-minded Readers and Writers
+              unleash the power of words, connect with like-minded readers and writers
             </Text>
           </Flex>
         </Flex>
