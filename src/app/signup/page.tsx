@@ -7,7 +7,7 @@ import {
   FormControl,
   FormLabel,
   HStack,
-  Icon,
+  IconButton,
   Image,
   Input,
   InputGroup,
@@ -23,8 +23,8 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
-import { FcGoogle } from 'react-icons/fc';
-import FgLinkedIn from '../../public/assets/icons/linkedin-icon.png';
+import { FcGoogle, FcHome } from 'react-icons/fc';
+import FgLinkedIn from './assets/icons/linkedin-icon.png';
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -154,11 +154,21 @@ const Signup = () => {
                   </Button>
 
                   <Button
-                    leftIcon={
-                      <Icon boxSize={6}>
-                        <Image src={FgLinkedIn.src} alt="linkedin icon" w="5rem" />
-                      </Icon>
-                    }
+                    leftIcon={<FcHome />}
+                    variant="outline"
+                    size="lg"
+                    width="100%"
+                    height="3rem"
+                  >
+                    Sign up with Linkedin
+                  </Button>
+
+                  {/* <IconButton icon={<Image src={FgLinkedIn.src} alt="Icon" />} aria-label="Icon" /> */}
+
+                  <Image src={'./assets/icons/linkedin-icon.png'} alt="simple image" />
+
+                  <Button
+                    leftIcon={<FcHome />}
                     variant="outline"
                     size="lg"
                     width="100%"
