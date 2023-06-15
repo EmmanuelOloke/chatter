@@ -149,30 +149,24 @@ const Signup = () => {
                     size="lg"
                     width="100%"
                     height="3rem"
+                    fontWeight="normal"
                   >
                     Sign up with Google
                   </Button>
 
                   <Button
-                    leftIcon={<FcHome />}
+                    leftIcon={
+                      <Image
+                        src={'./assets/icons/linkedin-icon.png'}
+                        alt="linkedin icon"
+                        width="1.2rem"
+                      />
+                    }
                     variant="outline"
                     size="lg"
                     width="100%"
                     height="3rem"
-                  >
-                    Sign up with Linkedin
-                  </Button>
-
-                  {/* <IconButton icon={<Image src={FgLinkedIn.src} alt="Icon" />} aria-label="Icon" /> */}
-
-                  <Image src={'./assets/icons/linkedin-icon.png'} alt="simple image" />
-
-                  <Button
-                    leftIcon={<FcHome />}
-                    variant="outline"
-                    size="lg"
-                    width="100%"
-                    height="3rem"
+                    fontWeight="normal"
                   >
                     Sign up with Linkedin
                   </Button>
