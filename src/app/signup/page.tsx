@@ -42,6 +42,7 @@ const Signup = () => {
           bgPos="center"
           bgSize="cover"
           w="32rem"
+          display={{ base: 'none', lg: 'flex' }}
         >
           <Flex flexDir="column" color="#FFF" alignItems="center" justifyContent="center" gap={8}>
             <Text textTransform="uppercase" fontSize="2.5rem" fontWeight="700">
@@ -59,7 +60,7 @@ const Signup = () => {
           </Flex>
         </Flex>
 
-        <Box w="32.5rem">
+        <Box w={{ base: '90vw', lg: '32.5rem' }} margin={{ base: '0 auto', lg: '0' }}>
           <Tabs isFitted>
             <TabList mb="1em">
               <Tab
@@ -81,20 +82,25 @@ const Signup = () => {
             </TabList>
             <TabPanels>
               <TabPanel padding={0}>
-                <Text fontSize="2rem" fontWeight="500" textAlign="center" mb={5}>
+                <Text
+                  fontSize={{ base: '1.5rem', lg: '2rem' }}
+                  fontWeight="500"
+                  textAlign="center"
+                  mb={5}
+                >
                   Register as a Writer/Reader
                 </Text>
 
                 <FormControl>
                   <Flex flexDir="column" gap="0.9rem">
-                    <Flex gap={2}>
+                    <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
                       <Box>
                         <FormLabel>First name</FormLabel>
-                        <Input placeholder="John" w="16rem" h="3rem" />
+                        <Input placeholder="John" w={{ base: '100%', lg: '16rem' }} h="3rem" />
                       </Box>
                       <Box>
                         <FormLabel>Last name</FormLabel>
-                        <Input placeholder="Doe" w="16rem" h="3rem" />
+                        <Input placeholder="Doe" w={{ base: '100%', lg: '16rem' }} h="3rem" />
                       </Box>
                     </Flex>
 
@@ -205,7 +211,12 @@ const Signup = () => {
               </TabPanel>
 
               <TabPanel>
-                <Text fontSize="2rem" fontWeight="500" textAlign="center" mb={5}>
+                <Text
+                  fontSize={{ base: '1.5rem', lg: '2rem' }}
+                  fontWeight="500"
+                  textAlign="center"
+                  mb={5}
+                >
                   Welcome back
                 </Text>
 
