@@ -23,16 +23,19 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
-import { FcGoogle, FcHome } from 'react-icons/fc';
-import FgLinkedIn from './assets/icons/linkedin-icon.png';
+import { FcGoogle } from 'react-icons/fc';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 const Signup = () => {
-  const [show, setShow] = useState(false);
-  const handleClick = () => setShow(!show);
+  const [passwordShow, setPasswordShow] = useState(false);
+  const [confirmPasswordShow, setConfirmPasswordShow] = useState(false);
+
+  const handlePasswordShow = () => setPasswordShow(!passwordShow);
+  const handleConfirmPasswordShow = () => setConfirmPasswordShow(!confirmPasswordShow);
 
   return (
     <Box width="100vw">
-      <HStack gap="15rem">
+      <HStack gap="15rem" alignItems="flex-start">
         <Flex
           h="100vh"
           background={`linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('./assets/images/signup-image/chatter-signup-image.jpeg')`}
@@ -78,98 +81,128 @@ const Signup = () => {
             </TabList>
             <TabPanels>
               <TabPanel padding={0}>
-                <Text fontSize="2rem" fontWeight="500" textAlign="center">
+                <Text fontSize="2rem" fontWeight="500" textAlign="center" mb={5}>
                   Register as a Writer/Reader
                 </Text>
 
-                <FormControl gap="5rem">
-                  <Flex gap={2}>
-                    <Box>
-                      <FormLabel>First name</FormLabel>
-                      <Input placeholder="John" w="16rem" />
-                    </Box>
-                    <Box>
-                      <FormLabel>Last name</FormLabel>
-                      <Input placeholder="Doe" w="16rem" />
-                    </Box>
+                <FormControl>
+                  <Flex flexDir="column" gap="0.9rem">
+                    <Flex gap={2}>
+                      <Box>
+                        <FormLabel>First name</FormLabel>
+                        <Input placeholder="John" w="16rem" h="3rem" />
+                      </Box>
+                      <Box>
+                        <FormLabel>Last name</FormLabel>
+                        <Input placeholder="Doe" w="16rem" h="3rem" />
+                      </Box>
+                    </Flex>
+
+                    <Flex flexDir="column">
+                      <FormLabel>You are joining as?</FormLabel>
+                      <Select defaultValue="option1" h="3rem">
+                        <option value="option1">Writer</option>
+                        <option value="option2">Reader</option>
+                      </Select>
+                    </Flex>
+
+                    <Flex flexDir="column">
+                      <FormLabel>Email address</FormLabel>
+                      <Input type="email" placeholder="Johndoe@gmail.com" h="3rem" />
+                    </Flex>
+
+                    <Flex flexDir="column">
+                      <FormLabel>Password</FormLabel>
+                      <InputGroup size="md">
+                        <Input
+                          pr="4.5rem"
+                          type={passwordShow ? 'text' : 'password'}
+                          placeholder="Enter password"
+                          h="3rem"
+                        />
+                        <InputRightElement
+                          width="4.5rem"
+                          onClick={handlePasswordShow}
+                          cursor="pointer"
+                          display="flex"
+                          alignItems="center"
+                          mt="0.2rem"
+                        >
+                          {passwordShow ? <ViewOffIcon /> : <ViewIcon />}
+                        </InputRightElement>
+                      </InputGroup>
+                    </Flex>
+
+                    <Flex flexDir="column">
+                      <FormLabel>Confirm Password</FormLabel>
+                      {/* <Flex alignItems="center"> */}
+                      <InputGroup size="md">
+                        <Input
+                          pr="4.5rem"
+                          type={confirmPasswordShow ? 'text' : 'password'}
+                          placeholder="Confirm password"
+                          h="3rem"
+                        />
+                        <InputRightElement
+                          width="4.5rem"
+                          onClick={handleConfirmPasswordShow}
+                          cursor="pointer"
+                          display="flex"
+                          alignItems="center"
+                          mt="0.2rem"
+                        >
+                          {confirmPasswordShow ? <ViewOffIcon /> : <ViewIcon />}
+                        </InputRightElement>
+                      </InputGroup>
+                      {/* </Flex> */}
+                    </Flex>
+
+                    <Flex>
+                      <Button
+                        variant="solid"
+                        backgroundColor="#543EE0"
+                        color="#FFF"
+                        size="lg"
+                        width="100%"
+                        height="3rem"
+                        _hover={{ backgroundColor: '#7a67f4' }}
+                      >
+                        Create account
+                      </Button>
+                    </Flex>
+
+                    <Flex>
+                      <Button
+                        leftIcon={<FcGoogle />}
+                        variant="outline"
+                        size="lg"
+                        width="100%"
+                        height="3rem"
+                        fontWeight="normal"
+                      >
+                        Sign up with Google
+                      </Button>
+                    </Flex>
+
+                    <Flex>
+                      <Button
+                        leftIcon={
+                          <Image
+                            src={'./assets/icons/linkedin-icon.png'}
+                            alt="linkedin icon"
+                            width="1.2rem"
+                          />
+                        }
+                        variant="outline"
+                        size="lg"
+                        width="100%"
+                        height="3rem"
+                        fontWeight="normal"
+                      >
+                        Sign up with Linkedin
+                      </Button>
+                    </Flex>
                   </Flex>
-
-                  <FormLabel>You are joining as?</FormLabel>
-                  <Select defaultValue="option1">
-                    <option value="option1">Writer</option>
-                    <option value="option2">Reader</option>
-                  </Select>
-
-                  <FormLabel>Email address</FormLabel>
-                  <Input type="email" placeholder="Johndoe@gmail.com" />
-
-                  <FormLabel>Password</FormLabel>
-                  <InputGroup size="md">
-                    <Input
-                      pr="4.5rem"
-                      type={show ? 'text' : 'password'}
-                      placeholder="Enter password"
-                    />
-                    <InputRightElement width="4.5rem">
-                      <Button h="1.75rem" size="sm" onClick={handleClick}>
-                        {show ? 'Hide' : 'Show'}
-                      </Button>
-                    </InputRightElement>
-                  </InputGroup>
-
-                  <FormLabel>Confirm Password</FormLabel>
-                  <InputGroup size="md">
-                    <Input
-                      pr="4.5rem"
-                      type={show ? 'text' : 'password'}
-                      placeholder="Enter password"
-                    />
-                    <InputRightElement width="4.5rem">
-                      <Button h="1.75rem" size="sm" onClick={handleClick}>
-                        {show ? 'Hide' : 'Show'}
-                      </Button>
-                    </InputRightElement>
-                  </InputGroup>
-
-                  <Button
-                    variant="solid"
-                    backgroundColor="#543EE0"
-                    color="#FFF"
-                    size="lg"
-                    width="100%"
-                    height="3rem"
-                    _hover={{ backgroundColor: '#7a67f4' }}
-                  >
-                    Create account
-                  </Button>
-
-                  <Button
-                    leftIcon={<FcGoogle />}
-                    variant="outline"
-                    size="lg"
-                    width="100%"
-                    height="3rem"
-                    fontWeight="normal"
-                  >
-                    Sign up with Google
-                  </Button>
-
-                  <Button
-                    leftIcon={
-                      <Image
-                        src={'./assets/icons/linkedin-icon.png'}
-                        alt="linkedin icon"
-                        width="1.2rem"
-                      />
-                    }
-                    variant="outline"
-                    size="lg"
-                    width="100%"
-                    height="3rem"
-                    fontWeight="normal"
-                  >
-                    Sign up with Linkedin
-                  </Button>
                 </FormControl>
               </TabPanel>
 
