@@ -7,10 +7,10 @@ const FeedSvg = ({ color }: Color) => {
       <path
         d="M20 1H8C7.4 1 7 1.4 7 2V5C7 5.6 7.4 6 8 6H20C20.6 6 21 5.6 21 5V2C21 1.4 20.6 1 20 1ZM11 16H6V21H11V16ZM6 8.5H1V13.5H6V8.5ZM17 8.6H8.5V13.3H17V8.6Z"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
