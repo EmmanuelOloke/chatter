@@ -8,12 +8,13 @@ import BookmarkSvg from './SvgComponents/sidebar-svgs/BookmarkSvg';
 import TeamSvg from './SvgComponents/sidebar-svgs/TeamSvg';
 import DraftsSvg from './SvgComponents/sidebar-svgs/DraftsSvg';
 import AnalyticsSvg from './SvgComponents/sidebar-svgs/AnalyticsSvg';
+import TrendingSvg from './SvgComponents/sidebar-svgs/TrendingSvg';
 
 const SideBar = () => {
   return (
     <Flex
       flexDir="column"
-      w="13rem"
+      w="16rem"
       pos="sticky"
       h="100vh"
       borderRight="1px solid #D0D0D0"
@@ -26,7 +27,7 @@ const SideBar = () => {
       </Flex>
 
       <Flex justifyContent="center">
-        <Flex fontWeight="400" fontSize="1rem" w="7.5rem">
+        <Flex fontWeight="400" fontSize="1rem" w="8.5rem" pl={2}>
           Overview
         </Flex>
       </Flex>
@@ -35,47 +36,83 @@ const SideBar = () => {
         <VStack w="9.5rem" alignItems="left">
           <NextLink href="/feed" passHref>
             <Flex justifyContent="left" alignItems="center" gap={3}>
-              <Icon viewBox="0 0 22 22" color="red.500">
-                <FeedSvg color="red" />
+              <Icon viewBox="0 0 22 22">
+                <FeedSvg color="#543EE0" />
               </Icon>
-              <Text>Feed</Text>
+              <Text color="#543EE0">Feed</Text>
             </Flex>
           </NextLink>
 
           <NextLink href="/feed" passHref>
             <Flex justifyContent="left" alignItems="center" gap={3}>
               <Icon viewBox="0 0 22 22" color="red.500">
-                <BookmarkSvg color="red" />
+                <BookmarkSvg color="#626262" />
               </Icon>
-              <Text>Bookmarks</Text>
+              <Text color="#626262">Bookmarks</Text>
             </Flex>
           </NextLink>
 
           <NextLink href="/feed" passHref>
             <Flex justifyContent="left" alignItems="center" gap={3}>
               <Icon viewBox="0 0 22 22" color="red.500">
-                <TeamSvg color="red" />
+                <TeamSvg color="#626262" />
               </Icon>
-              <Text>Team Blogs</Text>
+              <Text color="#626262">Team Blogs</Text>
             </Flex>
           </NextLink>
 
           <NextLink href="/feed" passHref>
             <Flex justifyContent="left" alignItems="center" gap={3}>
               <Icon viewBox="0 0 22 22" color="red.500">
-                <DraftsSvg color="red" />
+                <DraftsSvg color="#626262" />
               </Icon>
-              <Text>Drafts</Text>
+              <Text color="#626262">Drafts</Text>
             </Flex>
           </NextLink>
 
           <NextLink href="/feed" passHref>
             <Flex justifyContent="left" alignItems="center" gap={3}>
               <Icon viewBox="0 0 22 22" color="red.500">
-                <AnalyticsSvg color="red" />
+                <AnalyticsSvg color="#626262" />
               </Icon>
-              <Text>Analytics</Text>
+              <Text color="#626262">Analytics</Text>
             </Flex>
+          </NextLink>
+        </VStack>
+      </Flex>
+
+      <Flex justifyContent="center">
+        <Flex w="8.5rem" alignItems="center" gap={3} ml={2}>
+          <Text fontWeight="400" fontSize="1rem">
+            Trending Tags
+          </Text>
+
+          <Icon viewBox="0 0 22 22" color="red.500" mt={2}>
+            <TrendingSvg color="#626262" />
+          </Icon>
+        </Flex>
+      </Flex>
+
+      <Flex justifyContent="flex-end">
+        <VStack w="9.5rem" alignItems="left">
+          <NextLink href="/feed" passHref>
+            <Text color="#626262">Programming</Text>
+          </NextLink>
+
+          <NextLink href="/feed" passHref>
+            <Text color="#626262">Data Science</Text>
+          </NextLink>
+
+          <NextLink href="/feed" passHref>
+            <Text color="#626262">Technology</Text>
+          </NextLink>
+
+          <NextLink href="/feed" passHref>
+            <Text color="#626262">Machine Learning</Text>
+          </NextLink>
+
+          <NextLink href="/feed" passHref>
+            <Text color="#626262">Politics</Text>
           </NextLink>
         </VStack>
       </Flex>
