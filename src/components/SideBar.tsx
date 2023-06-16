@@ -9,6 +9,8 @@ import TeamSvg from './SvgComponents/sidebar-svgs/TeamSvg';
 import DraftsSvg from './SvgComponents/sidebar-svgs/DraftsSvg';
 import AnalyticsSvg from './SvgComponents/sidebar-svgs/AnalyticsSvg';
 import TrendingSvg from './SvgComponents/sidebar-svgs/TrendingSvg';
+import AccountSvg from './SvgComponents/sidebar-svgs/AccountSvg';
+import NotificationsSvg from './SvgComponents/sidebar-svgs/NotificationsSvg';
 
 const SideBar = () => {
   return (
@@ -116,6 +118,42 @@ const SideBar = () => {
           </NextLink>
         </VStack>
       </Flex>
+
+      <Flex justifyContent="center">
+        <Flex w="8.5rem" alignItems="center" gap={3} ml={2}>
+          <Text fontWeight="400" fontSize="1rem">
+            Personal
+          </Text>
+        </Flex>
+      </Flex>
+
+      <Flex justifyContent="flex-end">
+        <VStack w="9.5rem" alignItems="left">
+          <NextLink href="/feed" passHref>
+            <Flex justifyContent="left" alignItems="center" gap={3}>
+              <Icon viewBox="0 0 22 22">
+                <AccountSvg color="#626262" />
+              </Icon>
+              <Text color="#626262">Account</Text>
+            </Flex>
+          </NextLink>
+
+          <NextLink href="/feed" passHref>
+            <Flex justifyContent="left" alignItems="center" gap={3}>
+              <Icon viewBox="0 0 22 22" color="red.500">
+                <NotificationsSvg color="#626262" />
+              </Icon>
+              <Text color="#626262">Notifications</Text>
+            </Flex>
+          </NextLink>
+        </VStack>
+      </Flex>
+
+      <NextLink href="/logout" passHref>
+        <Text color="#FF1400" textAlign="center">
+          Log Out
+        </Text>
+      </NextLink>
     </Flex>
   );
 };
