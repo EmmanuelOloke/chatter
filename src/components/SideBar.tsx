@@ -17,10 +17,10 @@ const SideBar = () => {
     <Flex
       flexDir="column"
       w="16rem"
-      pos="sticky"
+      //   pos="sticky"
       h="100vh"
       borderRight="1px solid #D0D0D0"
-      left="0"
+      //   top="0"
       pt={3}
       gap={5}
     >
