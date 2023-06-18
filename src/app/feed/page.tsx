@@ -48,8 +48,6 @@ const Feed = () => {
           <Text>Feed navbar goes here</Text>
           <Text>Feed navbar goes here</Text>
           <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
         </VStack>
       </HStack>
     </div>
