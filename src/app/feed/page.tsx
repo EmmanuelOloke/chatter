@@ -10,7 +10,7 @@ const Feed = () => {
       <Flex>
         <SideBar />
 
-        <VStack>
+        <VStack ml="20%">
           <Text>Feed navbar goes here</Text>
           <Text>Feed navbar goes here</Text>
           <Text>Feed navbar goes here</Text>
