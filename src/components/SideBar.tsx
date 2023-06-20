@@ -15,12 +15,12 @@ import NotificationsSvg from './SvgComponents/sidebar-svgs/NotificationsSvg';
 const SideBar = () => {
   return (
     <Flex
+      position="sticky"
+      top={0}
       flexDir="column"
       w="16rem"
-      //   pos="sticky"
       h="100vh"
       borderRight="1px solid #D0D0D0"
-      //   top="0"
       pt={3}
       gap={5}
     >
