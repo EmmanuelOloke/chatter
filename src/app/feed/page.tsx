@@ -7,10 +7,9 @@ import React from 'react';
 const Feed = () => {
   return (
     <div>
-      <HStack alignItems="flex-start">
-        <Flex pos="sticky" top={0}>
-          <SideBar />
-        </Flex>
+      <Flex>
+        <SideBar />
+
         <VStack>
           <Text>Feed navbar goes here</Text>
           <Text>Feed navbar goes here</Text>
@@ -47,7 +46,7 @@ const Feed = () => {
           <Text>Feed navbar goes here</Text>
           <Text>Feed navbar goes here</Text>
         </VStack>
-      </HStack>
+      </Flex>
     </div>
   );
 };
