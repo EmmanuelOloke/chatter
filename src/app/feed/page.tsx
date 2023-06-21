@@ -1,5 +1,6 @@
 'use client';
 
+import FeedNavBar from '@/components/FeedNavBar';
 import SideBar from '@/components/SideBar';
 import { Box, Flex, HStack, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
@@ -7,46 +8,15 @@ import React from 'react';
 const Feed = () => {
   return (
     <div>
-      <Flex>
-        <SideBar />
+      <HStack h="100vh">
+        <HStack alignItems="flex-start" gap={0}>
+          <SideBar />
 
-        <VStack ml="20%">
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-          <Text>Feed navbar goes here</Text>
-        </VStack>
-      </Flex>
+          <VStack>
+            <FeedNavBar />
+          </VStack>
+        </HStack>
+      </HStack>
     </div>
   );
 };
