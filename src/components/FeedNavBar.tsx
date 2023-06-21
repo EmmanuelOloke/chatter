@@ -15,10 +15,10 @@ const FeedNavBar = () => {
     >
       <SearchChatter />
 
-      <HStack>
+      <HStack gap={3}>
         <NotificationsSvg color="#000000" />
 
-        <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+        <Avatar name="Username" src="./assets/avatars/adebola-muhydeen.jpeg" />
       </HStack>
     </HStack>
   );
