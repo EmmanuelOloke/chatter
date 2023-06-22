@@ -189,33 +189,9 @@ const NavBar = () => {
             </VStack>
 
             <VStack gap="1.5rem">
-              <NextLink href="/signup" passHref>
-                <Button
-                  color="#111"
-                  borderColor="#543EE0"
-                  variant="outline"
-                  size="lg"
-                  width="9rem"
-                  height="3rem"
-                  _hover={{ backgroundColor: '#f0eeff' }}
-                >
-                  Log in
-                </Button>
-              </NextLink>
+              <SecondaryButton text="Log in" link="/signup" width="9rem" height="3rem" />
 
-              <NextLink href="/signup" passHref>
-                <Button
-                  variant="solid"
-                  backgroundColor="#543EE0"
-                  color="#FFF"
-                  size="lg"
-                  width="9rem"
-                  height="3rem"
-                  _hover={{ backgroundColor: '#7a67f4' }}
-                >
-                  Sign up
-                </Button>
-              </NextLink>
+              <PrimaryButton text="Sign up" link="/signup" width="9rem" height="3rem" />
             </VStack>
           </DrawerBody>
         </DrawerContent>
