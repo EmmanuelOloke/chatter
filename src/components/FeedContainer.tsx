@@ -22,7 +22,7 @@ const FeedContainer = () => {
           </Text>
         </VStack>
 
-        <PrimaryButton text="Post a content" link="" width="12rem" height="4rem" hasIcon />
+        <PrimaryButton text="Post a content" link="" width="12rem" height="3.5rem" hasIcon />
       </HStack>
     </VStack>
   );
