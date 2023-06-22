@@ -7,9 +7,7 @@ import NotificationsSvg from './SvgComponents/sidebar-svgs/NotificationsSvg';
 const FeedNavBar = () => {
   return (
     <HStack
-      w="100vw"
-      justifyContent="center"
-      py="0.56rem"
+      p="0.5625rem 8.0625rem 0.5625rem 19.375rem"
       borderBottom="1px solid #D0D0D0"
       gap="12rem"
     >
