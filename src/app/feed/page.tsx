@@ -1,5 +1,6 @@
 'use client';
 
+import FeedContainer from '@/components/FeedContainer';
 import FeedNavBar from '@/components/FeedNavBar';
 import SideBar from '@/components/SideBar';
 import { Box, Flex, HStack, Text, VStack } from '@chakra-ui/react';
@@ -12,8 +13,12 @@ const Feed = () => {
         <HStack alignItems="flex-start" gap={0}>
           <SideBar />
 
-          <VStack>
+          <VStack w="100vw" alignItems="flex-start">
             <FeedNavBar />
+
+            <Box ml="1rem" mt="1rem">
+              <FeedContainer />
+            </Box>
           </VStack>
         </HStack>
       </HStack>
