@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Flex, Text, VStack } from '@chakra-ui/react';
+import { Flex, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
 import PrimaryButtonComponent from './PrimaryButtonComponent';
 
