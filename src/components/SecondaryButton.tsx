@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 
 import { ButtonComponentProps } from '@/types/button-types';
 
-const SecondaryButtonComponent = ({ text, link, width, height }: ButtonComponentProps) => {
+const SecondaryButton = ({ text, link, width, height }: ButtonComponentProps) => {
   return (
     <NextLink href={link} passHref>
       <Button
@@ -22,4 +22,4 @@ const SecondaryButtonComponent = ({ text, link, width, height }: ButtonComponent
   );
 };
 
-export default SecondaryButtonComponent;
+export default SecondaryButton;

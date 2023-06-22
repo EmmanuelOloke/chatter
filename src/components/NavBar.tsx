@@ -21,7 +21,7 @@ import { HamburgerIcon } from '@chakra-ui/icons';
 
 import chatterLogo from '../../public/assets/images/logo/chatter.png';
 import PrimaryButton from './PrimaryButton';
-import SecondaryButtonComponent from './SecondaryButtonComponent';
+import SecondaryButton from './SecondaryButton';
 
 const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -95,7 +95,7 @@ const NavBar = () => {
         </HStack>
 
         <HStack gap="1.5rem" display={invisibleOnMobile}>
-          <SecondaryButtonComponent text="Log in" link="/signup" width="9rem" height="3rem" />
+          <SecondaryButton text="Log in" link="/signup" width="9rem" height="3rem" />
 
           <PrimaryButton text="Sign up" link="/signup" width="9rem" height="3rem" />
         </HStack>
