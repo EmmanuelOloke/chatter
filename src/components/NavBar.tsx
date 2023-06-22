@@ -20,7 +20,7 @@ import NextLink from 'next/link';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
 import chatterLogo from '../../public/assets/images/logo/chatter.png';
-import PrimaryButtonComponent from './PrimaryButtonComponent';
+import PrimaryButton from './PrimaryButton';
 import SecondaryButtonComponent from './SecondaryButtonComponent';
 
 const NavBar = () => {
@@ -97,7 +97,7 @@ const NavBar = () => {
         <HStack gap="1.5rem" display={invisibleOnMobile}>
           <SecondaryButtonComponent text="Log in" link="/signup" width="9rem" height="3rem" />
 
-          <PrimaryButtonComponent text="Sign up" link="/signup" width="9rem" height="3rem" />
+          <PrimaryButton text="Sign up" link="/signup" width="9rem" height="3rem" />
         </HStack>
 
         <Box

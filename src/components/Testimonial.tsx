@@ -2,7 +2,7 @@
 
 import { Box, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
-import PrimaryButtonComponent from './PrimaryButtonComponent';
+import PrimaryButton from './PrimaryButton';
 
 export const Testimonial = () => {
   return (
@@ -41,7 +41,7 @@ export const Testimonial = () => {
           </Flex>
 
           <Flex justifyContent={{ base: 'center', lg: 'flex-start' }}>
-            <PrimaryButtonComponent text="Join Chatter" link="/signup" width="9rem" height="3rem" />
+            <PrimaryButton text="Join Chatter" link="/signup" width="9rem" height="3rem" />
           </Flex>
         </Flex>
       </VStack>

@@ -2,7 +2,7 @@
 
 import { Avatar, Box, Flex, HStack, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
-import PrimaryButtonComponent from './PrimaryButtonComponent';
+import PrimaryButton from './PrimaryButton';
 
 export const WriteReadConnect = () => {
   return (
@@ -48,7 +48,7 @@ export const WriteReadConnect = () => {
           </VStack>
 
           <Flex justifyContent={{ base: 'center', lg: 'left' }}>
-            <PrimaryButtonComponent text="Get Started" link="/signup" width="9rem" height="3rem" />
+            <PrimaryButton text="Get Started" link="/signup" width="9rem" height="3rem" />
           </Flex>
         </Flex>
       </Flex>

@@ -2,7 +2,7 @@
 
 import { Flex, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
-import PrimaryButtonComponent from './PrimaryButtonComponent';
+import PrimaryButton from './PrimaryButton';
 
 export const Hero = () => {
   return (
@@ -34,7 +34,7 @@ export const Hero = () => {
           Unleash the Power of Words, Connect with Like-minded Readers and Writers
         </Text>
 
-        <PrimaryButtonComponent text="Get Started" link="/signup" width="9rem" height="3rem" />
+        <PrimaryButton text="Get Started" link="/signup" width="9rem" height="3rem" />
       </VStack>
     </Flex>
   );
