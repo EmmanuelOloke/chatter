@@ -1,7 +1,8 @@
 'use client';
 
-import { Avatar, Box, Button, Flex, HStack, Text, VStack } from '@chakra-ui/react';
+import { Avatar, Box, Flex, HStack, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
+import PrimaryButtonComponent from './PrimaryButtonComponent';
 
 export const WriteReadConnect = () => {
   return (
@@ -47,17 +48,7 @@ export const WriteReadConnect = () => {
           </VStack>
 
           <Flex justifyContent={{ base: 'center', lg: 'left' }}>
-            <Button
-              variant="solid"
-              backgroundColor="#543EE0"
-              color="#FFF"
-              size="lg"
-              width="9rem"
-              height="3rem"
-              _hover={{ backgroundColor: '#7a67f4' }}
-            >
-              Get Started
-            </Button>
+            <PrimaryButtonComponent text="Get Started" link="/signup" width="9rem" height="3rem" />
           </Flex>
         </Flex>
       </Flex>
