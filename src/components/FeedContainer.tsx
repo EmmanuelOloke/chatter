@@ -1,7 +1,9 @@
 'use client';
 
 import {
+  Avatar,
   HStack,
+  Image,
   Tab,
   TabIndicator,
   TabList,
@@ -12,20 +14,19 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import PrimaryButton from './PrimaryButton';
+import { ForYouFeedCards } from '../../public/data/ForYouFeedCards';
+import ReadSvg from './SvgComponents/feed-cards-svgs/ReadSvg';
+import CommentSvg from './SvgComponents/feed-cards-svgs/CommentSvg';
+import LikeSvg from './SvgComponents/feed-cards-svgs/LikeSvg';
+import AnalyticsSvg from './SvgComponents/sidebar-svgs/AnalyticsSvg';
 
 const FeedContainer = () => {
   return (
-    <VStack border="1px solid #D0D0D0" width="70rem" gap={10}>
+    <VStack border="1px solid #D0D0D0" width="70rem" gap={10} pb="3rem" mb="3rem">
       <HStack gap="24rem" pt="1.38rem">
         <VStack alignItems="flex-start" gap="0.75rem">
-          <Text
-            fontSize="2rem"
-            fontWeight="500"
-            lineHeight="3rem"
-            color="#111"
-            textTransform="uppercase"
-          >
-            feed
+          <Text fontSize="2rem" fontWeight="500" lineHeight="3rem" color="#111">
+            FEED
           </Text>
           <Text color="#626262" fontSize="1.125rem">
             Explore different content you&apos;d love
@@ -44,16 +45,80 @@ const FeedContainer = () => {
 
         <TabIndicator mt="-0.3rem" height="0.3rem" bg="#543EE0" borderRadius="1px" />
 
-        <TabPanels border="1px solid #D0D0D0" borderRadius="0.5rem">
-          <TabPanel>
-            <p>One</p>
+        <TabPanels>
+          <TabPanel p={0}>
+            {ForYouFeedCards.map((ForYouFeedCard) => (
+              <VStack
+                key={ForYouFeedCard.id}
+                border="1px solid #D0D0D0"
+                _first={{ borderRadius: '0.5rem 0.5rem 0 0' }}
+                _last={{ borderRadius: '0 0 0.5rem 0.5rem' }}
+                alignItems="flex-start"
+                pl="2rem"
+                pt="2rem"
+                pb="2rem"
+              >
+                <HStack>
+                  <Avatar
+                    src={ForYouFeedCard.authorAvatar}
+                    name={ForYouFeedCard.authorName}
+                    size="lg"
+                  />
+
+                  <VStack alignItems="flex-start">
+                    <Text fontWeight="500" fontSize="1.5rem">
+                      {ForYouFeedCard.authorName}
+                    </Text>
+                    <HStack color="#626262" fontSize="0.9rem">
+                      <Text> {ForYouFeedCard.authorJob}, </Text>
+                      <Text> {ForYouFeedCard.datePublished} </Text>
+                    </HStack>
+                  </VStack>
+                </HStack>
+
+                <VStack alignItems="flex-start">
+                  <VStack alignItems="flex-start">
+                    <Text fontWeight="500" fontSize="2rem">
+                      {ForYouFeedCard.articleTitle}
+                    </Text>
+
+                    <HStack>
+                      <ReadSvg color="black" />
+
+                      <Text fontSize="0.9rem" color="#626262">
+                        {ForYouFeedCard.articleDuration}
+                      </Text>
+                    </HStack>
+                  </VStack>
+
+                  <Text color="#626262" w="38rem">
+                    {ForYouFeedCard.articleExcerpt}
+                  </Text>
+
+                  <Image src={ForYouFeedCard.articleImage} alt={ForYouFeedCard.articleTitle} />
+
+                  <HStack w="38rem" justifyContent="space-between">
+                    <HStack>
+                      <CommentSvg color="black" />
+                      <Text>{ForYouFeedCard.articleComments}</Text>
+                    </HStack>
+
+                    <HStack>
+                      <LikeSvg color="black" />
+                      <Text>{ForYouFeedCard.articleLikes}</Text>
+                    </HStack>
+
+                    <HStack>
+                      <AnalyticsSvg color="black" />
+                      <Text>{ForYouFeedCard.articleViews}</Text>
+                    </HStack>
+                  </HStack>
+                </VStack>
+              </VStack>
+            ))}
           </TabPanel>
-          <TabPanel>
-            <p>Two</p>
-          </TabPanel>
-          <TabPanel>
-            <p>Three</p>
-          </TabPanel>
+          <TabPanel>Two</TabPanel>
+          <TabPanel>Three</TabPanel>
         </TabPanels>
       </Tabs>
     </VStack>
