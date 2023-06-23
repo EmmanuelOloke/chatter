@@ -9,7 +9,7 @@ import React from 'react';
 const Feed = () => {
   return (
     <div>
-      <HStack h="100vh">
+      <HStack h="100%">
         <HStack alignItems="flex-start" gap={0}>
           <SideBar />
 
