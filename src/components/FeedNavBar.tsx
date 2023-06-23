@@ -16,7 +16,7 @@ const FeedNavBar = () => {
       <HStack gap={3}>
         <NotificationsSvg color="#000000" />
 
-        <Avatar name="Username" src="./assets/avatars/adebola-muhydeen.jpeg" />
+        <Avatar name="Username" src="./assets/avatars/adebobola-muhydeen.jpeg" />
       </HStack>
     </HStack>
   );
