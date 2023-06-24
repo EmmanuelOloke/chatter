@@ -20,6 +20,7 @@ import ReadSvg from './SvgComponents/feed-cards-svgs/ReadSvg';
 import CommentSvg from './SvgComponents/feed-cards-svgs/CommentSvg';
 import LikeSvg from './SvgComponents/feed-cards-svgs/LikeSvg';
 import AnalyticsSvg from './SvgComponents/sidebar-svgs/AnalyticsSvg';
+import { RecentFeedCards } from '../../public/data/RecentFeedCards';
 
 const FeedContainer = () => {
   return (
@@ -190,7 +191,78 @@ const FeedContainer = () => {
               </VStack>
             ))}
           </TabPanel>
-          <TabPanel>Three</TabPanel>
+
+          <TabPanel p={0}>
+            {RecentFeedCards.map((RecentFeedCard) => (
+              <VStack
+                key={RecentFeedCard.id}
+                border="1px solid #D0D0D0"
+                _first={{ borderRadius: '0.5rem 0.5rem 0 0' }}
+                _last={{ borderRadius: '0 0 0.5rem 0.5rem' }}
+                alignItems="flex-start"
+                pl="2rem"
+                pt="2rem"
+                pb="2rem"
+              >
+                <HStack>
+                  <Avatar
+                    src={RecentFeedCard.authorAvatar}
+                    name={RecentFeedCard.authorName}
+                    size="lg"
+                  />
+
+                  <VStack alignItems="flex-start">
+                    <Text fontWeight="500" fontSize="1.5rem">
+                      {RecentFeedCard.authorName}
+                    </Text>
+                    <HStack color="#626262" fontSize="0.9rem">
+                      <Text> {RecentFeedCard.authorJob}, </Text>
+                      <Text> {RecentFeedCard.datePublished} </Text>
+                    </HStack>
+                  </VStack>
+                </HStack>
+
+                <VStack alignItems="flex-start">
+                  <VStack alignItems="flex-start">
+                    <Text fontWeight="500" fontSize="2rem">
+                      {RecentFeedCard.articleTitle}
+                    </Text>
+
+                    <HStack>
+                      <ReadSvg color="black" />
+
+                      <Text fontSize="0.9rem" color="#626262">
+                        {RecentFeedCard.articleDuration}
+                      </Text>
+                    </HStack>
+                  </VStack>
+
+                  <Text color="#626262" w="38rem">
+                    {RecentFeedCard.articleExcerpt}
+                  </Text>
+
+                  <Image src={RecentFeedCard.articleImage} alt={RecentFeedCard.articleTitle} />
+
+                  <HStack w="38rem" justifyContent="space-between">
+                    <HStack>
+                      <CommentSvg color="black" />
+                      <Text>{RecentFeedCard.articleComments}</Text>
+                    </HStack>
+
+                    <HStack>
+                      <LikeSvg color="black" />
+                      <Text>{RecentFeedCard.articleLikes}</Text>
+                    </HStack>
+
+                    <HStack>
+                      <AnalyticsSvg color="black" />
+                      <Text>{RecentFeedCard.articleViews}</Text>
+                    </HStack>
+                  </HStack>
+                </VStack>
+              </VStack>
+            ))}
+          </TabPanel>
         </TabPanels>
       </Tabs>
     </VStack>
