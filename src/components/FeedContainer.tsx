@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import PrimaryButton from './PrimaryButton';
 import { ForYouFeedCards } from '../../public/data/ForYouFeedCards';
+import { FeaturedFeedCards } from '../../public/data/FeaturedFeedCards';
 import ReadSvg from './SvgComponents/feed-cards-svgs/ReadSvg';
 import CommentSvg from './SvgComponents/feed-cards-svgs/CommentSvg';
 import LikeSvg from './SvgComponents/feed-cards-svgs/LikeSvg';
@@ -117,7 +118,78 @@ const FeedContainer = () => {
               </VStack>
             ))}
           </TabPanel>
-          <TabPanel>Two</TabPanel>
+
+          <TabPanel p={0}>
+            {FeaturedFeedCards.map((FeaturedFeedCard) => (
+              <VStack
+                key={FeaturedFeedCard.id}
+                border="1px solid #D0D0D0"
+                _first={{ borderRadius: '0.5rem 0.5rem 0 0' }}
+                _last={{ borderRadius: '0 0 0.5rem 0.5rem' }}
+                alignItems="flex-start"
+                pl="2rem"
+                pt="2rem"
+                pb="2rem"
+              >
+                <HStack>
+                  <Avatar
+                    src={FeaturedFeedCard.authorAvatar}
+                    name={FeaturedFeedCard.authorName}
+                    size="lg"
+                  />
+
+                  <VStack alignItems="flex-start">
+                    <Text fontWeight="500" fontSize="1.5rem">
+                      {FeaturedFeedCard.authorName}
+                    </Text>
+                    <HStack color="#626262" fontSize="0.9rem">
+                      <Text> {FeaturedFeedCard.authorJob}, </Text>
+                      <Text> {FeaturedFeedCard.datePublished} </Text>
+                    </HStack>
+                  </VStack>
+                </HStack>
+
+                <VStack alignItems="flex-start">
+                  <VStack alignItems="flex-start">
+                    <Text fontWeight="500" fontSize="2rem">
+                      {FeaturedFeedCard.articleTitle}
+                    </Text>
+
+                    <HStack>
+                      <ReadSvg color="black" />
+
+                      <Text fontSize="0.9rem" color="#626262">
+                        {FeaturedFeedCard.articleDuration}
+                      </Text>
+                    </HStack>
+                  </VStack>
+
+                  <Text color="#626262" w="38rem">
+                    {FeaturedFeedCard.articleExcerpt}
+                  </Text>
+
+                  <Image src={FeaturedFeedCard.articleImage} alt={FeaturedFeedCard.articleTitle} />
+
+                  <HStack w="38rem" justifyContent="space-between">
+                    <HStack>
+                      <CommentSvg color="black" />
+                      <Text>{FeaturedFeedCard.articleComments}</Text>
+                    </HStack>
+
+                    <HStack>
+                      <LikeSvg color="black" />
+                      <Text>{FeaturedFeedCard.articleLikes}</Text>
+                    </HStack>
+
+                    <HStack>
+                      <AnalyticsSvg color="black" />
+                      <Text>{FeaturedFeedCard.articleViews}</Text>
+                    </HStack>
+                  </HStack>
+                </VStack>
+              </VStack>
+            ))}
+          </TabPanel>
           <TabPanel>Three</TabPanel>
         </TabPanels>
       </Tabs>
