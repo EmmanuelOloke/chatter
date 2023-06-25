@@ -7,7 +7,6 @@ import {
   FormControl,
   FormLabel,
   HStack,
-  IconButton,
   Image,
   Input,
   InputGroup,
@@ -19,7 +18,6 @@ import {
   TabPanels,
   Tabs,
   Text,
-  VStack,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
