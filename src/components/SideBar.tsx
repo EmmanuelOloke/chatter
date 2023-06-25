@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, Icon, Image, Text, VStack } from '@chakra-ui/react';
+import { Flex, Icon, Text, VStack } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 import FeedSvg from '@/components/SvgComponents/sidebar-svgs/FeedSvg';
