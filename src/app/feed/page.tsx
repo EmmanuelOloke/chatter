@@ -11,7 +11,9 @@ const Feed = () => {
     <div>
       <HStack h="100%">
         <HStack alignItems="flex-start" gap={0}>
+          {/* <Box pos="sticky" top="0"> */}
           <SideBar />
+          {/* </Box> */}
 
           <VStack w="100vw" alignItems="flex-start">
             <FeedNavBar />
