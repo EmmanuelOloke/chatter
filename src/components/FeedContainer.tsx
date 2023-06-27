@@ -102,17 +102,17 @@ const FeedContainer = () => {
                   <HStack w="38rem" justifyContent="space-between">
                     <HStack>
                       <CommentSvg color="black" />
-                      <Text>{ForYouFeedCard.articleComments}</Text>
+                      <Text color="#626262">{ForYouFeedCard.articleComments}</Text>
                     </HStack>
 
                     <HStack>
                       <LikeSvg color="black" />
-                      <Text>{ForYouFeedCard.articleLikes}</Text>
+                      <Text color="#626262">{ForYouFeedCard.articleLikes}</Text>
                     </HStack>
 
                     <HStack>
                       <AnalyticsSvg color="black" />
-                      <Text>{ForYouFeedCard.articleViews}</Text>
+                      <Text color="#626262">{ForYouFeedCard.articleViews}</Text>
                     </HStack>
                   </HStack>
                 </VStack>
