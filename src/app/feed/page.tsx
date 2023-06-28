@@ -3,14 +3,14 @@
 import FeedContainer from '@/components/FeedContainer';
 import FeedNavBar from '@/components/FeedNavBar';
 import SideBar from '@/components/SideBar';
-import { Box, HStack, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, HStack, Heading, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
 
 const Feed = () => {
   return (
     <div>
       <HStack>
-        <HStack alignItems="flex-start" gap={0}>
+        <HStack height="100vh" alignItems="flex-start" gap={0} overflowY="auto">
           <SideBar />
 
           <VStack w="100vw" alignItems="flex-start">
