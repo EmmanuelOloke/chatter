@@ -6,7 +6,7 @@ import PenSvg from './SvgComponents/PenSvg';
 
 import { ButtonComponentProps } from '@/types/button-types';
 
-const PrimaryButton = ({ text, link, width, height, hasIcon }: ButtonComponentProps) => {
+const PrimaryButton = ({ text, link, width, height, hasIcon, disabled }: ButtonComponentProps) => {
   return (
     <NextLink href={link} passHref>
       <Button
@@ -18,6 +18,7 @@ const PrimaryButton = ({ text, link, width, height, hasIcon }: ButtonComponentPr
         height={height}
         _hover={{ backgroundColor: '#7A67F4' }}
         leftIcon={hasIcon ? <PenSvg color="white" /> : <></>}
+        isDisabled={disabled}
       >
         {text}
       </Button>
