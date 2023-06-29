@@ -39,7 +39,7 @@ const SideBar = () => {
 
             <NextLink href="/bookmarks" passHref>
               <Flex justifyContent="left" alignItems="center" gap={3}>
-                <Icon viewBox="0 0 22 22" color="red.500">
+                <Icon viewBox="0 0 22 22">
                   <BookmarkSvg color="#626262" />
                 </Icon>
                 <Text color="#626262">Bookmarks</Text>
@@ -48,7 +48,7 @@ const SideBar = () => {
 
             <NextLink href="/feed" passHref>
               <Flex justifyContent="left" alignItems="center" gap={3}>
-                <Icon viewBox="0 0 22 22" color="red.500">
+                <Icon viewBox="0 0 22 22">
                   <TeamSvg color="#626262" />
                 </Icon>
                 <Text color="#626262">Team Blogs</Text>
@@ -57,7 +57,7 @@ const SideBar = () => {
 
             <NextLink href="/feed" passHref>
               <Flex justifyContent="left" alignItems="center" gap={3}>
-                <Icon viewBox="0 0 22 22" color="red.500">
+                <Icon viewBox="0 0 22 22">
                   <DraftsSvg color="#626262" />
                 </Icon>
                 <Text color="#626262">Drafts</Text>
@@ -66,7 +66,7 @@ const SideBar = () => {
 
             <NextLink href="/feed" passHref>
               <Flex justifyContent="left" alignItems="center" gap={3}>
-                <Icon viewBox="0 0 22 22" color="red.500">
+                <Icon viewBox="0 0 22 22">
                   <AnalyticsSvg color="#626262" />
                 </Icon>
                 <Text color="#626262">Analytics</Text>
@@ -81,7 +81,7 @@ const SideBar = () => {
               Trending Tags
             </Text>
 
-            <Icon viewBox="0 0 22 22" color="red.500" mt={2}>
+            <Icon viewBox="0 0 22 22" mt={2}>
               <TrendingSvg color="#626262" />
             </Icon>
           </Flex>
@@ -132,7 +132,7 @@ const SideBar = () => {
 
             <NextLink href="/feed" passHref>
               <Flex justifyContent="left" alignItems="center" gap={3}>
-                <Icon viewBox="0 0 22 22" color="red.500">
+                <Icon viewBox="0 0 22 22">
                   <NotificationsSvg color="#626262" />
                 </Icon>
                 <Text color="#626262">Notifications</Text>
