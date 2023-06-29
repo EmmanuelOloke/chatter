@@ -11,7 +11,6 @@ import AnalyticsSvg from './SvgComponents/sidebar-svgs/AnalyticsSvg';
 import TrendingSvg from './SvgComponents/sidebar-svgs/TrendingSvg';
 import AccountSvg from './SvgComponents/sidebar-svgs/AccountSvg';
 import NotificationsSvg from './SvgComponents/sidebar-svgs/NotificationsSvg';
-import { CSSObject } from '@emotion/react';
 
 const SideBar = () => {
   return (
