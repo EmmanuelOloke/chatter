@@ -4,4 +4,5 @@ export type ButtonComponentProps = {
   width: string;
   height: string;
   hasIcon?: boolean;
+  disabled?: boolean;
 };
