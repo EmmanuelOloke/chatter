@@ -37,7 +37,7 @@ const SideBar = () => {
               </Flex>
             </NextLink>
 
-            <NextLink href="/feed" passHref>
+            <NextLink href="/bookmarks" passHref>
               <Flex justifyContent="left" alignItems="center" gap={3}>
                 <Icon viewBox="0 0 22 22" color="red.500">
                   <BookmarkSvg color="#626262" />
