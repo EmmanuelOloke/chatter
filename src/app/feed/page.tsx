@@ -8,21 +8,19 @@ import React from 'react';
 
 const Feed = () => {
   return (
-    <div>
-      <HStack>
-        <HStack height="100vh" alignItems="flex-start" gap={0} overflowY="auto">
-          <SideBar />
+    <HStack>
+      <HStack height="100vh" alignItems="flex-start" gap={0} overflowY="auto">
+        <SideBar />
 
-          <VStack w="100vw" alignItems="flex-start">
-            <FeedNavBar />
+        <VStack w="100vw" alignItems="flex-start">
+          <FeedNavBar />
 
-            <Box ml="1rem" mt="1rem">
-              <FeedContainer />
-            </Box>
-          </VStack>
-        </HStack>
+          <Box ml="1rem" mt="1rem">
+            <FeedContainer />
+          </Box>
+        </VStack>
       </HStack>
-    </div>
+    </HStack>
   );
 };
 
