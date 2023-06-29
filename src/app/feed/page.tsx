@@ -3,7 +3,7 @@
 import FeedContainer from '@/components/FeedContainer';
 import FeedNavBar from '@/components/FeedNavBar';
 import SideBar from '@/components/SideBar';
-import { Box, Flex, HStack, Heading, Text, VStack } from '@chakra-ui/react';
+import { Box, HStack, VStack } from '@chakra-ui/react';
 import React from 'react';
 
 const Feed = () => {
