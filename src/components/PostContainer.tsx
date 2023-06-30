@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, HStack, Textarea, VStack } from '@chakra-ui/react';
+import { Box, HStack, VStack } from '@chakra-ui/react';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
 import dynamic from 'next/dynamic';
