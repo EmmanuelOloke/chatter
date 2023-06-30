@@ -35,7 +35,7 @@ const FeedContainer = () => {
           </Text>
         </VStack>
 
-        <PrimaryButton text="Post a content" link="" width="12rem" height="3.5rem" hasIcon />
+        <PrimaryButton text="Post a content" link="/post" width="12rem" height="3.5rem" hasIcon />
       </HStack>
 
       <Tabs pos="relative" variant="unstyled" width="79%">
