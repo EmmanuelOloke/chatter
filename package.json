@@ -20,6 +20,7 @@
     "@uiw/react-md-editor": "^3.6.0",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
+    "formik": "^2.4.2",
     "framer-motion": "^10.12.16",
     "next": "13.4.4",
     "next-remove-imports": "^1.0.11",
