@@ -94,11 +94,11 @@ const Signup = () => {
                     <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
                       <Box>
                         <FormLabel>First name</FormLabel>
-                        <Input placeholder="John" w={{ base: '100%', lg: '16rem' }} h="3rem" />
+                        <Input placeholder="Tony" w={{ base: '100%', lg: '16rem' }} h="3rem" />
                       </Box>
                       <Box>
                         <FormLabel>Last name</FormLabel>
-                        <Input placeholder="Doe" w={{ base: '100%', lg: '16rem' }} h="3rem" />
+                        <Input placeholder="Stark" w={{ base: '100%', lg: '16rem' }} h="3rem" />
                       </Box>
                     </Flex>
 
@@ -112,7 +112,7 @@ const Signup = () => {
 
                     <Flex flexDir="column">
                       <FormLabel>Email address</FormLabel>
-                      <Input type="email" placeholder="Johndoe@gmail.com" h="3rem" />
+                      <Input type="email" placeholder="ironman@jarvis.com" h="3rem" />
                     </Flex>
 
                     <Flex flexDir="column">
