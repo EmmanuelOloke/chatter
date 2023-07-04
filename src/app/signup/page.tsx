@@ -222,7 +222,7 @@ const Signup = () => {
                   <Flex flexDir="column" gap="1.5rem">
                     <Flex flexDir="column">
                       <FormLabel>Email address</FormLabel>
-                      <Input type="email" placeholder="Johndoe@gmail.com" h="3rem" />
+                      <Input type="email" placeholder="ironman@jarvis.com" h="3rem" />
                     </Flex>
 
                     <Flex flexDir="column">
