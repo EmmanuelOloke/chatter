@@ -231,7 +231,7 @@ const Signup = () => {
                         <Input
                           pr="4.5rem"
                           type={passwordShow ? 'text' : 'password'}
-                          placeholder="Enter password"
+                          placeholder="**********"
                           h="3rem"
                         />
                         <InputRightElement
