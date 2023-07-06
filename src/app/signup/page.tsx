@@ -95,11 +95,21 @@ const Signup = () => {
                     <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
                       <Box>
                         <FormLabel>First name</FormLabel>
-                        <Input placeholder="Tony" w={{ base: '100%', lg: '16rem' }} h="3rem" />
+                        <Input
+                          name="first-name"
+                          placeholder="Tony"
+                          w={{ base: '100%', lg: '16rem' }}
+                          h="3rem"
+                        />
                       </Box>
                       <Box>
                         <FormLabel>Last name</FormLabel>
-                        <Input placeholder="Stark" w={{ base: '100%', lg: '16rem' }} h="3rem" />
+                        <Input
+                          name="last-name"
+                          placeholder="Stark"
+                          w={{ base: '100%', lg: '16rem' }}
+                          h="3rem"
+                        />
                       </Box>
                     </Flex>
 
@@ -113,13 +123,19 @@ const Signup = () => {
 
                     <Flex flexDir="column">
                       <FormLabel>Email address</FormLabel>
-                      <Input type="email" placeholder="ironman@jarvis.com" h="3rem" />
+                      <Input
+                        name="email-address"
+                        type="email"
+                        placeholder="ironman@jarvis.com"
+                        h="3rem"
+                      />
                     </Flex>
 
                     <Flex flexDir="column">
                       <FormLabel>Password</FormLabel>
                       <InputGroup size="md">
                         <Input
+                          name="password"
                           pr="4.5rem"
                           type={passwordShow ? 'text' : 'password'}
                           placeholder="Enter password"
@@ -142,6 +158,7 @@ const Signup = () => {
                       <FormLabel>Confirm Password</FormLabel>
                       <InputGroup size="md">
                         <Input
+                          name="confirm-password"
                           pr="4.5rem"
                           type={confirmPasswordShow ? 'text' : 'password'}
                           placeholder="Confirm password"
