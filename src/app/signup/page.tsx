@@ -210,14 +210,14 @@ const Signup = () => {
               </TabPanel>
 
               <TabPanel>
-                <Text
+                <Heading
                   fontSize={{ base: '1.5rem', lg: '2rem' }}
                   fontWeight="500"
                   textAlign="center"
                   mb={5}
                 >
                   Welcome back
-                </Text>
+                </Heading>
 
                 <FormControl>
                   <Flex flexDir="column" gap="1.5rem">
