@@ -7,6 +7,7 @@ import {
   FormControl,
   FormLabel,
   HStack,
+  Heading,
   Image,
   Input,
   InputGroup,
@@ -80,14 +81,14 @@ const Signup = () => {
             </TabList>
             <TabPanels>
               <TabPanel padding={0}>
-                <Text
+                <Heading
                   fontSize={{ base: '1.5rem', lg: '2rem' }}
                   fontWeight="500"
                   textAlign="center"
                   mb={5}
                 >
                   Register as a Writer/Reader
-                </Text>
+                </Heading>
 
                 <FormControl>
                   <Flex flexDir="column" gap="0.9rem">
