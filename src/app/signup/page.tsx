@@ -240,13 +240,19 @@ const Signup = () => {
                   <Flex flexDir="column" gap="1.5rem">
                     <Flex flexDir="column">
                       <FormLabel>Email address</FormLabel>
-                      <Input type="email" placeholder="ironman@jarvis.com" h="3rem" />
+                      <Input
+                        name="email-address"
+                        type="email"
+                        placeholder="ironman@jarvis.com"
+                        h="3rem"
+                      />
                     </Flex>
 
                     <Flex flexDir="column">
                       <FormLabel>Password</FormLabel>
                       <InputGroup size="md">
                         <Input
+                          name="password"
                           pr="4.5rem"
                           type={passwordShow ? 'text' : 'password'}
                           placeholder="**********"
