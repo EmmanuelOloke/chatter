@@ -305,65 +305,94 @@ const Signup = () => {
               </TabPanel>
 
               <TabPanel>
-                <Heading
-                  fontSize={{ base: '1.5rem', lg: '2rem' }}
-                  fontWeight="500"
-                  textAlign="center"
-                  mb={5}
+                <Formik
+                  initialValues={{ email: '', password: '' }}
+                  validationSchema={Yup.object({
+                    email: Yup.string()
+                      .required('Email is required')
+                      .email('Invalid email address'),
+                    password: Yup.string()
+                      .required('Password is required')
+                      .min(8, 'Password must be at least 8 characters'),
+                  })}
+                  onSubmit={(values, actions) => {
+                    alert(JSON.stringify(values, null, 2));
+                    actions.resetForm();
+                  }}
                 >
-                  Welcome back
-                </Heading>
+                  {(formik) => (
+                    <Box as="form" onSubmit={formik.handleSubmit}>
+                      <Heading
+                        fontSize={{ base: '1.5rem', lg: '2rem' }}
+                        fontWeight="500"
+                        textAlign="center"
+                        mb={5}
+                      >
+                        Welcome back
+                      </Heading>
 
-                <FormControl>
-                  <Flex flexDir="column" gap="1.5rem">
-                    <Flex flexDir="column">
-                      <FormLabel>Email address</FormLabel>
-                      <Input
-                        id="login-email-address"
-                        name="email-address"
-                        type="email"
-                        placeholder="ironman@jarvis.com"
-                        h="3rem"
-                      />
-                    </Flex>
+                      <FormControl>
+                        <Flex flexDir="column" gap="1.5rem">
+                          <FormControl
+                            id="login-email-address"
+                            isInvalid={Boolean(formik.errors.email && formik.touched.email)}
+                          >
+                            <FormLabel>Email address</FormLabel>
+                            <Field
+                              as={Input}
+                              name="email"
+                              type="email"
+                              placeholder="ironman@jarvis.com"
+                              h="3rem"
+                            />
+                            <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+                          </FormControl>
 
-                    <Flex flexDir="column">
-                      <FormLabel>Password</FormLabel>
-                      <InputGroup size="md">
-                        <Input
-                          id="login-password"
-                          name="password"
-                          pr="4.5rem"
-                          type={passwordShow ? 'text' : 'password'}
-                          placeholder="**********"
-                          h="3rem"
-                        />
-                        <InputRightElement
-                          width="4.5rem"
-                          onClick={handlePasswordShow}
-                          cursor="pointer"
-                          display="flex"
-                          alignItems="center"
-                          mt="0.2rem"
-                        >
-                          {passwordShow ? <ViewOffIcon /> : <ViewIcon />}
-                        </InputRightElement>
-                      </InputGroup>
-                    </Flex>
+                          <FormControl
+                            id="login-password"
+                            isInvalid={Boolean(formik.errors.password && formik.touched.password)}
+                          >
+                            <FormLabel>Password</FormLabel>
+                            <InputGroup size="md">
+                              <Field
+                                as={Input}
+                                name="password"
+                                pr="4.5rem"
+                                type={passwordShow ? 'text' : 'password'}
+                                placeholder="**********"
+                                h="3rem"
+                              />
+                              <InputRightElement
+                                width="4.5rem"
+                                onClick={handlePasswordShow}
+                                cursor="pointer"
+                                display="flex"
+                                alignItems="center"
+                                mt="0.2rem"
+                              >
+                                {passwordShow ? <ViewOffIcon /> : <ViewIcon />}
+                              </InputRightElement>
+                            </InputGroup>
+                            <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+                          </FormControl>
 
-                    <Button
-                      variant="solid"
-                      backgroundColor="#543EE0"
-                      color="#FFF"
-                      size="lg"
-                      width="100%"
-                      height="3rem"
-                      _hover={{ backgroundColor: '#7a67f4' }}
-                    >
-                      Login
-                    </Button>
-                  </Flex>
-                </FormControl>
+                          <Button
+                            variant="solid"
+                            backgroundColor="#543EE0"
+                            color="#FFF"
+                            size="lg"
+                            width="100%"
+                            height="3rem"
+                            _hover={{ backgroundColor: '#7a67f4' }}
+                            type="submit"
+                          >
+                            Login
+                          </Button>
+                        </Flex>
+                      </FormControl>
+                    </Box>
+                  )}
+                </Formik>
               </TabPanel>
             </TabPanels>
           </Tabs>
