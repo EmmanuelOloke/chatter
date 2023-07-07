@@ -5,6 +5,7 @@ import {
   Button,
   Flex,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   HStack,
   Heading,
@@ -24,6 +25,8 @@ import React, { useState } from 'react';
 
 import { FcGoogle } from 'react-icons/fc';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { Field, Formik } from 'formik';
+import * as Yup from 'yup';
 
 const Signup = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -81,149 +84,224 @@ const Signup = () => {
             </TabList>
             <TabPanels>
               <TabPanel padding={0}>
-                <Heading
-                  fontSize={{ base: '1.5rem', lg: '2rem' }}
-                  fontWeight="500"
-                  textAlign="center"
-                  mb={5}
+                <Formik
+                  initialValues={{
+                    firstName: '',
+                    lastName: '',
+                    role: 'Writer',
+                    email: '',
+                    password: '',
+                    confirmPassword: '',
+                  }}
+                  validationSchema={Yup.object({
+                    firstName: Yup.string()
+                      .required('First name is required')
+                      .min(2, 'First name is too short'),
+                    lastName: Yup.string()
+                      .required('Last name is required')
+                      .min(2, 'Last name is too short'),
+                    email: Yup.string()
+                      .required('Email is required')
+                      .email('Invalid email address'),
+                    password: Yup.string()
+                      .required('Password is required')
+                      .min(8, 'Password must be at least 8 characters'),
+                    confirmPassword: Yup.string()
+                      .oneOf([Yup.ref('password')], 'Passwords must match')
+                      .required('Confirm password is required'),
+                  })}
+                  onSubmit={(values, actions) => {
+                    alert(JSON.stringify(values, null, 2));
+                    actions.resetForm();
+                  }}
                 >
-                  Register as a Writer/Reader
-                </Heading>
-
-                <FormControl>
-                  <Flex flexDir="column" gap="0.9rem">
-                    <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
-                      <Box>
-                        <FormLabel>First name</FormLabel>
-                        <Input
-                          name="first-name"
-                          placeholder="Tony"
-                          w={{ base: '100%', lg: '16rem' }}
-                          h="3rem"
-                        />
-                      </Box>
-                      <Box>
-                        <FormLabel>Last name</FormLabel>
-                        <Input
-                          name="last-name"
-                          placeholder="Stark"
-                          w={{ base: '100%', lg: '16rem' }}
-                          h="3rem"
-                        />
-                      </Box>
-                    </Flex>
-
-                    <Flex flexDir="column">
-                      <FormLabel>You are joining as?</FormLabel>
-                      <Select defaultValue="option1" h="3rem">
-                        <option value="option1">Writer</option>
-                        <option value="option2">Reader</option>
-                      </Select>
-                    </Flex>
-
-                    <Flex flexDir="column">
-                      <FormLabel>Email address</FormLabel>
-                      <Input
-                        name="email-address"
-                        type="email"
-                        placeholder="ironman@jarvis.com"
-                        h="3rem"
-                      />
-                    </Flex>
-
-                    <Flex flexDir="column">
-                      <FormLabel>Password</FormLabel>
-                      <InputGroup size="md">
-                        <Input
-                          name="password"
-                          pr="4.5rem"
-                          type={passwordShow ? 'text' : 'password'}
-                          placeholder="Enter password"
-                          h="3rem"
-                        />
-                        <InputRightElement
-                          width="4.5rem"
-                          onClick={handlePasswordShow}
-                          cursor="pointer"
-                          display="flex"
-                          alignItems="center"
-                          mt="0.2rem"
-                        >
-                          {passwordShow ? <ViewOffIcon /> : <ViewIcon />}
-                        </InputRightElement>
-                      </InputGroup>
-                    </Flex>
-
-                    <Flex flexDir="column">
-                      <FormLabel>Confirm Password</FormLabel>
-                      <InputGroup size="md">
-                        <Input
-                          name="confirm-password"
-                          pr="4.5rem"
-                          type={confirmPasswordShow ? 'text' : 'password'}
-                          placeholder="Confirm password"
-                          h="3rem"
-                        />
-                        <InputRightElement
-                          width="4.5rem"
-                          onClick={handleConfirmPasswordShow}
-                          cursor="pointer"
-                          display="flex"
-                          alignItems="center"
-                          mt="0.2rem"
-                        >
-                          {confirmPasswordShow ? <ViewOffIcon /> : <ViewIcon />}
-                        </InputRightElement>
-                      </InputGroup>
-                    </Flex>
-
-                    <Flex>
-                      <Button
-                        variant="solid"
-                        backgroundColor="#543EE0"
-                        color="#FFF"
-                        size="lg"
-                        width="100%"
-                        height="3rem"
-                        _hover={{ backgroundColor: '#7a67f4' }}
+                  {(formik) => (
+                    <Box as="form" onSubmit={formik.handleSubmit}>
+                      <Heading
+                        fontSize={{ base: '1.5rem', lg: '2rem' }}
+                        fontWeight="500"
+                        textAlign="center"
+                        mb={5}
                       >
-                        Create account
-                      </Button>
-                    </Flex>
+                        Register as a Writer/Reader
+                      </Heading>
 
-                    <Flex>
-                      <Button
-                        leftIcon={<FcGoogle />}
-                        variant="outline"
-                        size="lg"
-                        width="100%"
-                        height="3rem"
-                        fontWeight="normal"
-                      >
-                        Sign up with Google
-                      </Button>
-                    </Flex>
+                      <Flex flexDir="column" gap="0.9rem">
+                        <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
+                          <FormControl
+                            id="firstName"
+                            isInvalid={Boolean(formik.errors.firstName && formik.touched.firstName)}
+                          >
+                            <FormLabel>First name</FormLabel>
+                            <Field
+                              as={Input}
+                              name="firstName"
+                              placeholder="Tony"
+                              w={{ base: '100%', lg: '16rem' }}
+                              h="3rem"
+                            />
+                            <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
+                          </FormControl>
+                          <FormControl
+                            id="lastName"
+                            isInvalid={Boolean(formik.errors.lastName && formik.touched.lastName)}
+                          >
+                            <FormLabel>Last name</FormLabel>
+                            <Field
+                              as={Input}
+                              name="lastName"
+                              placeholder="Stark"
+                              w={{ base: '100%', lg: '16rem' }}
+                              h="3rem"
+                            />
+                            <FormErrorMessage>{formik.errors.lastName}</FormErrorMessage>
+                          </FormControl>
+                        </Flex>
 
-                    <Flex>
-                      <Button
-                        leftIcon={
-                          <Image
-                            src={'./assets/icons/linkedin-icon.png'}
-                            alt="linkedin icon"
-                            width="1.2rem"
-                          />
-                        }
-                        variant="outline"
-                        size="lg"
-                        width="100%"
-                        height="3rem"
-                        fontWeight="normal"
-                      >
-                        Sign up with Linkedin
-                      </Button>
-                    </Flex>
-                  </Flex>
-                </FormControl>
+                        <Flex flexDir="column">
+                          <FormControl id="role">
+                            <FormLabel>You are joining as?</FormLabel>
+                            <Select
+                              defaultValue="Writer"
+                              h="3rem"
+                              name="role"
+                              onChange={formik.handleChange}
+                            >
+                              <option value="Writer">Writer</option>
+                              <option value="Reader">Reader</option>
+                            </Select>
+                          </FormControl>
+                        </Flex>
+
+                        <Flex flexDir="column">
+                          <FormControl
+                            id="email"
+                            isInvalid={Boolean(formik.errors.email && formik.touched.email)}
+                          >
+                            <FormLabel>Email address</FormLabel>
+                            <Field
+                              as={Input}
+                              name="email"
+                              type="email"
+                              placeholder="ironman@jarvis.com"
+                              h="3rem"
+                            />
+                            <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+                          </FormControl>
+                        </Flex>
+
+                        <Flex flexDir="column">
+                          <FormControl
+                            id="password"
+                            isInvalid={Boolean(formik.errors.password && formik.touched.password)}
+                          >
+                            <FormLabel>Password</FormLabel>
+                            <InputGroup size="md">
+                              <Field
+                                as={Input}
+                                name="password"
+                                pr="4.5rem"
+                                type={passwordShow ? 'text' : 'password'}
+                                placeholder="Enter password"
+                                h="3rem"
+                              />
+                              <InputRightElement
+                                width="4.5rem"
+                                onClick={handlePasswordShow}
+                                cursor="pointer"
+                                display="flex"
+                                alignItems="center"
+                                mt="0.2rem"
+                              >
+                                {passwordShow ? <ViewOffIcon /> : <ViewIcon />}
+                              </InputRightElement>
+                            </InputGroup>
+                            <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+                          </FormControl>
+                        </Flex>
+
+                        <Flex flexDir="column">
+                          <FormControl
+                            id="confirmPassword"
+                            isInvalid={Boolean(
+                              formik.errors.confirmPassword && formik.touched.confirmPassword
+                            )}
+                          >
+                            <FormLabel>Confirm Password</FormLabel>
+                            <InputGroup size="md">
+                              <Field
+                                as={Input}
+                                name="confirmPassword"
+                                pr="4.5rem"
+                                type={confirmPasswordShow ? 'text' : 'password'}
+                                placeholder="Confirm password"
+                                h="3rem"
+                              />
+                              <InputRightElement
+                                width="4.5rem"
+                                onClick={handleConfirmPasswordShow}
+                                cursor="pointer"
+                                display="flex"
+                                alignItems="center"
+                                mt="0.2rem"
+                              >
+                                {confirmPasswordShow ? <ViewOffIcon /> : <ViewIcon />}
+                              </InputRightElement>
+                            </InputGroup>
+                            <FormErrorMessage>{formik.errors.confirmPassword}</FormErrorMessage>
+                          </FormControl>
+                        </Flex>
+
+                        <Flex>
+                          <Button
+                            variant="solid"
+                            backgroundColor="#543EE0"
+                            color="#FFF"
+                            size="lg"
+                            width="100%"
+                            height="3rem"
+                            _hover={{ backgroundColor: '#7a67f4' }}
+                            type="submit"
+                          >
+                            Create account
+                          </Button>
+                        </Flex>
+
+                        <Flex>
+                          <Button
+                            leftIcon={<FcGoogle />}
+                            variant="outline"
+                            size="lg"
+                            width="100%"
+                            height="3rem"
+                            fontWeight="normal"
+                          >
+                            Sign up with Google
+                          </Button>
+                        </Flex>
+
+                        <Flex>
+                          <Button
+                            leftIcon={
+                              <Image
+                                src={'./assets/icons/linkedin-icon.png'}
+                                alt="linkedin icon"
+                                width="1.2rem"
+                              />
+                            }
+                            variant="outline"
+                            size="lg"
+                            width="100%"
+                            height="3rem"
+                            fontWeight="normal"
+                          >
+                            Sign up with Linkedin
+                          </Button>
+                        </Flex>
+                      </Flex>
+                    </Box>
+                  )}
+                </Formik>
               </TabPanel>
 
               <TabPanel>
@@ -241,6 +319,7 @@ const Signup = () => {
                     <Flex flexDir="column">
                       <FormLabel>Email address</FormLabel>
                       <Input
+                        id="login-email-address"
                         name="email-address"
                         type="email"
                         placeholder="ironman@jarvis.com"
@@ -252,6 +331,7 @@ const Signup = () => {
                       <FormLabel>Password</FormLabel>
                       <InputGroup size="md">
                         <Input
+                          id="login-password"
                           name="password"
                           pr="4.5rem"
                           type={passwordShow ? 'text' : 'password'}
