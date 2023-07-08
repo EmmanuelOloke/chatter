@@ -36,8 +36,8 @@ const Signup = () => {
   const handleConfirmPasswordShow = () => setConfirmPasswordShow(!confirmPasswordShow);
 
   return (
-    <Box width="100vw">
-      <HStack gap="15rem">
+    <Box width="100vw" h="full">
+      <HStack gap="15rem" alignItems="stretch">
         <Flex
           h="100vh"
           background={`linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('./assets/images/signup-image/chatter-signup-image.jpeg')`}
