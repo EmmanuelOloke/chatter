@@ -72,7 +72,7 @@ const FeedContainer = () => {
                       {ForYouFeedCard.authorName}
                     </Text>
                     <HStack color="#626262" fontSize="0.9rem">
-                      <Text> {ForYouFeedCard.authorJob}, </Text>
+                      <Text> {ForYouFeedCard.authorJob}. </Text>
                       <Text> {ForYouFeedCard.datePublished} </Text>
                     </HStack>
                   </VStack>
