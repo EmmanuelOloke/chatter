@@ -32,10 +32,6 @@ import axios from 'axios';
 const Signup = () => {
   const [passwordShow, setPasswordShow] = useState(false);
   const [confirmPasswordShow, setConfirmPasswordShow] = useState(false);
-
-  const handlePasswordShow = () => setPasswordShow(!passwordShow);
-  const handleConfirmPasswordShow = () => setConfirmPasswordShow(!confirmPasswordShow);
-
   const [userInfo, setUserInfo] = useState({
     firstName: '',
     lastName: '',
@@ -44,14 +40,20 @@ const Signup = () => {
     password: '',
     confirmPassword: '',
   });
+  const [loading, setLoading] = useState(false);
+
+  const handlePasswordShow = () => setPasswordShow(!passwordShow);
+  const handleConfirmPasswordShow = () => setConfirmPasswordShow(!confirmPasswordShow);
 
   const handleSubmit = async (values: any) => {
+    setLoading(true);
     const res = await axios
       .post('/api/auth/signup', JSON.stringify(values))
       .then((response) => console.log(response.data))
       .catch((error) => console.error(error));
 
     console.log(res);
+    setLoading(false);
   };
 
   return (
@@ -123,7 +125,6 @@ const Signup = () => {
                       .required('Confirm password is required'),
                   })}
                   onSubmit={(values, actions) => {
-                    alert(JSON.stringify(values, null, 2));
                     handleSubmit(values);
                     actions.resetForm();
                   }}
@@ -275,6 +276,8 @@ const Signup = () => {
                             height="3rem"
                             _hover={{ backgroundColor: '#7a67f4' }}
                             type="submit"
+                            isLoading={loading}
+                            loadingText="Creating your account"
                           >
                             Create account
                           </Button>
