@@ -27,6 +27,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 const Signup = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -34,6 +35,24 @@ const Signup = () => {
 
   const handlePasswordShow = () => setPasswordShow(!passwordShow);
   const handleConfirmPasswordShow = () => setConfirmPasswordShow(!confirmPasswordShow);
+
+  const [userInfo, setUserInfo] = useState({
+    firstName: '',
+    lastName: '',
+    role: 'Writer',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const handleSubmit = async (values: any) => {
+    const res = await axios
+      .post('/api/auth/signup', JSON.stringify(values))
+      .then((response) => console.log(response.data))
+      .catch((error) => console.error(error));
+
+    console.log(res);
+  };
 
   return (
     <Box width="100vw" h="full">
@@ -85,14 +104,7 @@ const Signup = () => {
             <TabPanels>
               <TabPanel padding={0}>
                 <Formik
-                  initialValues={{
-                    firstName: '',
-                    lastName: '',
-                    role: 'Writer',
-                    email: '',
-                    password: '',
-                    confirmPassword: '',
-                  }}
+                  initialValues={userInfo}
                   validationSchema={Yup.object({
                     firstName: Yup.string()
                       .required('First name is required')
@@ -112,6 +124,7 @@ const Signup = () => {
                   })}
                   onSubmit={(values, actions) => {
                     alert(JSON.stringify(values, null, 2));
+                    handleSubmit(values);
                     actions.resetForm();
                   }}
                 >
