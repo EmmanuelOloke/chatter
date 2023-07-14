@@ -22,7 +22,8 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { FcGoogle } from 'react-icons/fc';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Field, Formik } from 'formik';
@@ -41,6 +42,15 @@ const Signup = () => {
     confirmPassword: '',
   });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const [userLoginInfo, setUserLoginInfo] = useState({
+    email: '',
+    password: '',
+  });
+
+  const { email, password } = userLoginInfo;
+  const router = useRouter();
 
   const handlePasswordShow = () => setPasswordShow(!passwordShow);
   const handleConfirmPasswordShow = () => setConfirmPasswordShow(!confirmPasswordShow);
@@ -54,6 +64,13 @@ const Signup = () => {
 
     console.log(res);
     setLoading(false);
+  };
+
+  const handleLogin = async (values: any) => {
+    const res = await signIn('credentials', { ...values, redirect: false });
+
+    if (res?.error) return setError(res.error);
+    router.replace('/feeds');
   };
 
   return (
@@ -322,7 +339,7 @@ const Signup = () => {
 
               <TabPanel>
                 <Formik
-                  initialValues={{ email: '', password: '' }}
+                  initialValues={userLoginInfo}
                   validationSchema={Yup.object({
                     email: Yup.string()
                       .required('Email is required')
@@ -332,7 +349,7 @@ const Signup = () => {
                       .min(8, 'Password must be at least 8 characters'),
                   })}
                   onSubmit={(values, actions) => {
-                    alert(JSON.stringify(values, null, 2));
+                    handleLogin(values);
                     actions.resetForm();
                   }}
                 >
