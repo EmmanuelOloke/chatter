@@ -45,7 +45,7 @@ const Signup = () => {
   const handlePasswordShow = () => setPasswordShow(!passwordShow);
   const handleConfirmPasswordShow = () => setConfirmPasswordShow(!confirmPasswordShow);
 
-  const handleSubmit = async (values: any) => {
+  const handleSignup = async (values: any) => {
     setLoading(true);
     const res = await axios
       .post('/api/auth/signup', JSON.stringify(values))
@@ -125,7 +125,7 @@ const Signup = () => {
                       .required('Confirm password is required'),
                   })}
                   onSubmit={(values, actions) => {
-                    handleSubmit(values);
+                    handleSignup(values);
                     actions.resetForm();
                   }}
                 >
