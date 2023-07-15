@@ -16,14 +16,19 @@ export const authOptions: NextAuthOptions = {
           email: string;
           password: string;
         };
+        await connectToMongoDB().catch((err) => {
+          console.log('cannot connect to MongoDB');
+          throw new Error(err);
+        });
 
-        await connectToMongoDB();
+        const user = await User.findOne({ email })
+          .select('+password')
+          .catch((err) => console.log(err));
 
-        const user = await User.findOne({ email });
-        if (!user) throw Error('Email/Password mismatch');
+        if (!user) throw Error('Email or Password Invalid');
 
         const passwordMatch = await user.comparePassword(password);
-        if (!passwordMatch) throw Error('Email/Password mismatch');
+        if (!passwordMatch) throw Error('Email or Password Invalid');
 
         return {
           firstName: user.firstName,
