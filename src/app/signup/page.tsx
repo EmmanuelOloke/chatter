@@ -70,7 +70,9 @@ const Signup = () => {
     const res = await signIn('credentials', { ...values, redirect: false });
 
     if (res?.error) return setError(res.error);
-    router.replace('/feeds');
+    router.replace('/feed');
+
+    console.log(res);
   };
 
   return (
@@ -363,6 +365,8 @@ const Signup = () => {
                       >
                         Welcome back
                       </Heading>
+
+                      {error && <Text>{error}</Text>}
 
                       <FormControl>
                         <Flex flexDir="column" gap="1.5rem">
