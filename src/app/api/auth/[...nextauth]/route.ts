@@ -17,7 +17,7 @@ export const authOptions: NextAuthOptions = {
           password: string;
         };
         await connectToMongoDB().catch((err) => {
-          console.log('cannot connect to MongoDB');
+          console.log('cannot connect to database');
           throw new Error(err);
         });
 
