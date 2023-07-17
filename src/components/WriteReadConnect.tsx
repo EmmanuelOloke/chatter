@@ -26,7 +26,7 @@ export const WriteReadConnect = () => {
             <Avatar
               size="2xl"
               name="Adebola Muhydeen"
-              src="./assets/avatars/adebola-muhydeen.jpeg"
+              src="./assets/avatars/adebobola-muhydeen.jpeg"
             />
           </HStack>
         </Box>
