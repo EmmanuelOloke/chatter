@@ -71,7 +71,7 @@ const Signup = () => {
     const res = await signIn('credentials', { ...values, redirect: false });
 
     if (res?.error) return setError(res.error);
-    router.replace('/feed');
+    router.push('/feed');
   };
 
   return (
