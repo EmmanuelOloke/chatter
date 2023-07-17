@@ -29,6 +29,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import ErrorAlert from '@/components/ErrorAlert';
 
 const Signup = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -364,7 +365,7 @@ const Signup = () => {
                         Welcome back
                       </Heading>
 
-                      {error && <Text color="red">{error}</Text>}
+                      {error && <ErrorAlert errorDescription={error} />}
 
                       <FormControl>
                         <Flex flexDir="column" gap="1.5rem">
