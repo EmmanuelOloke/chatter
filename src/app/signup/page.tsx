@@ -63,15 +63,17 @@ const Signup = () => {
       .then((response) => console.log(response.data))
       .catch((error) => console.error(error));
 
-    console.log(res);
     setLoading(false);
   };
 
   const handleLogin = async (values: any) => {
+    setLoading(true);
+
     const res = await signIn('credentials', { ...values, redirect: false });
 
     if (res?.error) return setError(res.error);
     router.push('/feed');
+    setLoading(false);
   };
 
   return (
@@ -421,6 +423,8 @@ const Signup = () => {
                             height="3rem"
                             _hover={{ backgroundColor: '#7a67f4' }}
                             type="submit"
+                            isLoading={loading}
+                            loadingText="Logging you in"
                           >
                             Login
                           </Button>
