@@ -364,7 +364,7 @@ const Signup = () => {
                         Welcome back
                       </Heading>
 
-                      {error && <Text>{error}</Text>}
+                      {error && <Text color="red">{error}</Text>}
 
                       <FormControl>
                         <Flex flexDir="column" gap="1.5rem">
