@@ -11,8 +11,17 @@ import AnalyticsSvg from './SvgComponents/sidebar-svgs/AnalyticsSvg';
 import TrendingSvg from './SvgComponents/sidebar-svgs/TrendingSvg';
 import AccountSvg from './SvgComponents/sidebar-svgs/AccountSvg';
 import NotificationsSvg from './SvgComponents/sidebar-svgs/NotificationsSvg';
+import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const SideBar = () => {
+  const router = useRouter();
+
+  const logOut = () => {
+    signOut();
+    router.push('/signup');
+  };
+
   return (
     <Box position="sticky" top="0" pt="1rem" w="16rem" h="100vh" borderRight="1px solid #D0D0D0">
       <Flex flexDir="column" gap={5}>
@@ -141,11 +150,9 @@ const SideBar = () => {
           </VStack>
         </Flex>
 
-        <NextLink href="/logout" passHref>
-          <Text color="#FF1400" textAlign="center">
-            Log Out
-          </Text>
-        </NextLink>
+        <Text onClick={logOut} color="#FF1400" textAlign="center" _hover={{ cursor: 'pointer' }}>
+          Log Out
+        </Text>
       </Flex>
     </Box>
   );
