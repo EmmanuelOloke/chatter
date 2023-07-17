@@ -17,9 +17,9 @@ import { useRouter } from 'next/navigation';
 const SideBar = () => {
   const router = useRouter();
 
-  const logOut = () => {
-    signOut();
-    router.push('/signup');
+  const logOut = async () => {
+    const data = await signOut({ redirect: false, callbackUrl: '/' });
+    router.push(data.url);
   };
 
   return (
