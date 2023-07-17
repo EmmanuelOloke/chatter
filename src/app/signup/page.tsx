@@ -71,8 +71,6 @@ const Signup = () => {
 
     if (res?.error) return setError(res.error);
     router.replace('/feed');
-
-    console.log(res);
   };
 
   return (
