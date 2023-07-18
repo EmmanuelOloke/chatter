@@ -12,7 +12,5 @@ export default async function GuestLayout({ children }: Props) {
 
   if (session?.user) redirect('/feed');
 
-  console.log(session?.user);
-
   return <>{children}</>;
 }
