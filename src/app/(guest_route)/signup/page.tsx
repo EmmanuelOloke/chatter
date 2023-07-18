@@ -72,7 +72,10 @@ const Signup = () => {
 
     const res = await signIn('credentials', { ...values, redirect: false });
 
-    if (res?.error) return setError(res.error);
+    if (res?.error) {
+      setLoading(false);
+      return setError(res.error);
+    }
     router.push('/feed');
     setLoading(false);
   };
