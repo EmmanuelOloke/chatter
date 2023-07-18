@@ -30,6 +30,7 @@ import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import ErrorAlert from '@/components/ErrorAlert';
+import { GoogleSignInButton } from '@/components/AuthButtons';
 
 const Signup = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -428,6 +429,8 @@ const Signup = () => {
                           >
                             Login
                           </Button>
+
+                          <GoogleSignInButton />
                         </Flex>
                       </FormControl>
                     </Box>
