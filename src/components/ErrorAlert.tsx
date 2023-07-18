@@ -8,7 +8,7 @@ type ErrorProps = {
 
 const ErrorAlert = ({ errorDescription }: ErrorProps) => {
   return (
-    <Box color="white" borderRadius={4} backgroundColor="#e53e3e" px={2} py={2}>
+    <Box color="white" borderRadius={4} backgroundColor="#e53e3e" px={3} py={3}>
       <HStack gap={3}>
         <WarningIcon />
         <Text fontWeight="bold">{errorDescription}</Text>
