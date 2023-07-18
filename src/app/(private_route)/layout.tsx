@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/route';
+import { authOptions } from '../(guest_route)/api/auth/[...nextauth]/route';
 import { redirect } from 'next/navigation';
 
 interface Props {
