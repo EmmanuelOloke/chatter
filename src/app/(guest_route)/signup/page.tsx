@@ -31,6 +31,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import ErrorAlert from '@/components/ErrorAlert';
 import { GoogleSignInButton, LinkedInSignInButton } from '@/components/AuthButtons';
+import { loginUser } from '../../../../lib/loginUser';
 
 const Signup = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -59,12 +60,17 @@ const Signup = () => {
 
   const handleSignup = async (values: any) => {
     setLoading(true);
-    const res = await axios
-      .post('/api/auth/signup', JSON.stringify(values))
-      .then((response) => console.log(response.data))
-      .catch((error) => console.error(error));
+    const res = await axios.post('/api/auth/signup', JSON.stringify(values));
 
-    setLoading(false);
+    if (res.data.user) {
+      const { email, password } = values;
+      const loginRes = await loginUser({ email, password });
+
+      if (loginRes?.error) throw new Error(loginRes.error);
+
+      setLoading(false);
+      router.push('/feed');
+    }
   };
 
   const handleLogin = async (values: any) => {
