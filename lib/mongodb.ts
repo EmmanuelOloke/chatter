@@ -1,4 +1,4 @@
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 
 const { MONGODB_URI } = process.env;
 let connection: typeof mongoose;
