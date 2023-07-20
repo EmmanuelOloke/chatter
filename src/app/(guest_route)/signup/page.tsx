@@ -60,16 +60,21 @@ const Signup = () => {
 
   const handleSignup = async (values: any) => {
     setLoading(true);
-    const res = await axios.post('/api/auth/signup', JSON.stringify(values));
+    try {
+      const res = await axios.post('/api/auth/signup', JSON.stringify(values));
 
-    if (res.data.user) {
-      const { email, password } = values;
-      const loginRes = await loginUser({ email, password });
+      if (res.data.user) {
+        const { email, password } = values;
+        const loginRes = await loginUser({ email, password });
 
-      if (loginRes?.error) throw new Error(loginRes.error);
+        if (loginRes?.error) throw new Error(loginRes.error);
 
+        setLoading(false);
+        router.push('/feed');
+      }
+    } catch (error: any) {
       setLoading(false);
-      router.push('/feed');
+      return setError(error.response.data.error);
     }
   };
 
@@ -169,6 +174,8 @@ const Signup = () => {
                       >
                         Register as a Writer/Reader
                       </Heading>
+
+                      {error && <ErrorAlert errorDescription={error} />}
 
                       <Flex flexDir="column" gap="0.9rem">
                         <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
