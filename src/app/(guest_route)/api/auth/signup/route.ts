@@ -30,7 +30,7 @@ export async function POST(req: NextRequest, res: NextResponse): Promise<NewResp
   const userExists = await User.findOne({ email });
 
   if (userExists)
-    return NextResponse.json({ error: 'A user with this email already exists' }, { status: 409 });
+    return NextResponse.json({ error: 'A user with this email already exist' }, { status: 409 });
 
   const user = await User.create({ ...body });
 
