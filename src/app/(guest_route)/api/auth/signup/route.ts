@@ -32,6 +32,9 @@ export async function POST(req: NextRequest, res: NextResponse): Promise<NewResp
   if (userExists)
     return NextResponse.json({ error: 'A user with this email already exist' }, { status: 409 });
 
+  if (password.length < 8)
+    return NextResponse.json({ error: 'Password must be at least 8 characters' }, { status: 409 });
+
   const user = await User.create({ ...body });
 
   return NextResponse.json({
