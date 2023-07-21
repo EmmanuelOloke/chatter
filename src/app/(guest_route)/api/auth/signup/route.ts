@@ -24,6 +24,9 @@ type NewResponse = NextResponse<{ user?: NewUserResponse; error?: string }>;
 export async function POST(req: NextRequest, res: NextResponse): Promise<NewResponse> {
   const body = (await req.json()) as NewUserRequest;
 
+  if (Object.keys(body).length === 0)
+    return NextResponse.json({ error: 'Data is missing' }, { status: 400 });
+
   await connectToMongoDB();
 
   const { firstName, lastName, role, email, password, confirmPassword } = body;
