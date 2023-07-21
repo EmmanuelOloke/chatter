@@ -45,7 +45,8 @@ const Signup = () => {
     confirmPassword: '',
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [signupError, setSignupError] = useState('');
+  const [loginError, setLoginError] = useState('');
 
   const [userLoginInfo, setUserLoginInfo] = useState({
     email: '',
@@ -74,7 +75,7 @@ const Signup = () => {
       }
     } catch (error: any) {
       setLoading(false);
-      return setError(error.response.data.error);
+      return setSignupError(error.response.data.error);
     }
   };
 
@@ -85,7 +86,7 @@ const Signup = () => {
 
     if (res?.error) {
       setLoading(false);
-      return setError(res.error);
+      return setLoginError(res.error);
     }
     router.push('/feed');
     setLoading(false);
@@ -175,7 +176,7 @@ const Signup = () => {
                         Register as a Writer/Reader
                       </Heading>
 
-                      {error && <ErrorAlert errorDescription={error} />}
+                      {signupError && <ErrorAlert errorDescription={signupError} />}
 
                       <Flex flexDir="column" gap="0.9rem">
                         <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
@@ -384,7 +385,7 @@ const Signup = () => {
                         Welcome back
                       </Heading>
 
-                      {error && <ErrorAlert errorDescription={error} />}
+                      {loginError && <ErrorAlert errorDescription={loginError} />}
 
                       <FormControl>
                         <Flex flexDir="column" gap="1.5rem">
