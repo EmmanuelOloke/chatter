@@ -8,6 +8,7 @@ interface NewUserRequest {
   role: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 interface NewUserResponse {
@@ -25,7 +26,7 @@ export async function POST(req: NextRequest, res: NextResponse): Promise<NewResp
 
   await connectToMongoDB();
 
-  const { firstName, lastName, role, email, password } = body;
+  const { firstName, lastName, role, email, password, confirmPassword } = body;
 
   const userExists = await User.findOne({ email });
 
@@ -34,6 +35,12 @@ export async function POST(req: NextRequest, res: NextResponse): Promise<NewResp
 
   if (password.length < 8)
     return NextResponse.json({ error: 'Password must be at least 8 characters' }, { status: 409 });
+
+  if (password !== confirmPassword)
+    return NextResponse.json(
+      { error: 'Password and Confirm Password must match' },
+      { status: 409 }
+    );
 
   const user = await User.create({ ...body });
 
