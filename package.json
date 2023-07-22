@@ -24,6 +24,7 @@
     "@uiw/react-md-editor": "^3.6.0",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
+    "cookies-next": "^2.1.2",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "formik": "^2.4.2",
