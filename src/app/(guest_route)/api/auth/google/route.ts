@@ -4,10 +4,11 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import '../../../../../../lib/passport';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export async function GET(req: NextApiRequest, res: NextApiResponse, nextFunction: NextApiHandler) {
+export async function GET(req: NextApiRequest, res: NextApiResponse, next: NextApiHandler) {
   await connectToMongoDB();
+  console.log('is it here??');
   passport.authenticate('google', {
     scope: ['profile', 'email'],
     session: false,
-  })(req, res, nextFunction);
+  })(req, res, next(req, res));
 }
