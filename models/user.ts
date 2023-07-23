@@ -8,6 +8,7 @@ interface UserDocument extends Document {
   role: 'Writer' | 'Reader';
   email: string;
   password: string;
+  tokens: string[];
 }
 
 interface Methods {
