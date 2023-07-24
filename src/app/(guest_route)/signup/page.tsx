@@ -30,12 +30,7 @@ import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import ErrorAlert from '@/components/ErrorAlert';
-import {
-  GoogleSignInButton,
-  GoogleSignUpButton,
-  LinkedInSignInButton,
-  LinkedInSignUpButton,
-} from '@/components/AuthButtons';
+import { GoogleSignInButton, LinkedInSignInButton } from '@/components/AuthButtons';
 import { loginUser } from '../../../../lib/loginUser';
 
 const Signup = () => {
@@ -326,8 +321,8 @@ const Signup = () => {
                           </Button>
                         </Flex>
 
-                        <GoogleSignUpButton />
-                        <LinkedInSignUpButton />
+                        <GoogleSignInButton text="Sign up with Google" />
+                        <LinkedInSignInButton text="Sign up with LinkedIn" />
                       </Flex>
                     </Box>
                   )}
@@ -423,8 +418,8 @@ const Signup = () => {
                             Login
                           </Button>
 
-                          <GoogleSignInButton />
-                          <LinkedInSignInButton />
+                          <GoogleSignInButton text="Continue with Google" />
+                          <LinkedInSignInButton text="Continue with LinkedIn" />
                         </Flex>
                       </FormControl>
                     </Box>
