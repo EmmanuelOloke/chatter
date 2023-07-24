@@ -14,6 +14,7 @@ export const authOptions: NextAuthOptions = {
       type: 'credentials',
       credentials: {},
       async authorize(credentials, req) {
+        // console.log({ req, credentials });
         const { email, password } = credentials as {
           email: string;
           password: string;
@@ -50,13 +51,26 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    jwt(params: any) {
-      if (params.user?.role) {
-        params.token.role = params.user.role;
-        params.token.id = params.user.id;
-        params.token.email = params.user.email;
-        params.token.firstName = params.user.firstName;
-        params.token.lastName = params.user.lastName;
+    async jwt(params) {
+      let user = await User.findOne({ email: params.token.email });
+
+      if (!user) {
+        user = await User.create({
+          email: params.token.email,
+          firstName: params.token.name!.split(' ')[0],
+          lastName: params.token.name!.split(' ')[1],
+          role: 'Writer',
+          password: 'pleasechangeme',
+          tokens: [],
+        });
+      }
+
+      if (user) {
+        params.token.role = user.role;
+        params.token.id = user.id;
+        params.token.email = user.email;
+        params.token.firstName = user.firstName;
+        params.token.lastName = user.lastName;
       }
       return params.token;
     },
