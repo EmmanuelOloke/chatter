@@ -61,7 +61,6 @@ export const authOptions: NextAuthOptions = {
           lastName: params.token.name!.split(' ')[1],
           role: 'Writer',
           password: 'pleasechangeme',
-          tokens: [],
         });
       }
 
