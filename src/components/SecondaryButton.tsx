@@ -4,9 +4,15 @@ import NextLink from 'next/link';
 
 import { ButtonComponentProps } from '@/types/button-types';
 
-const SecondaryButton = ({ text, link, width, height }: ButtonComponentProps) => {
+const SecondaryButton = ({ text, link, width, height, tab }: ButtonComponentProps) => {
   return (
-    <NextLink href={link} passHref>
+    <NextLink
+      passHref
+      href={{
+        pathname: link,
+        query: { tab },
+      }}
+    >
       <Button
         variant="outline"
         borderColor="#543EE0"
