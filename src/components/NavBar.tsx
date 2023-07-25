@@ -95,7 +95,7 @@ const NavBar = () => {
         </HStack>
 
         <HStack gap="1.5rem" display={invisibleOnMobile}>
-          <SecondaryButton text="Log in" link="/signup" width="9rem" height="3rem" />
+          <SecondaryButton text="Log in" link="/signup" width="9rem" height="3rem" tab="1" />
 
           <PrimaryButton text="Sign up" link="/signup" width="9rem" height="3rem" />
         </HStack>
@@ -189,7 +189,7 @@ const NavBar = () => {
             </VStack>
 
             <VStack gap="1.5rem">
-              <SecondaryButton text="Log in" link="/signup" width="9rem" height="3rem" />
+              <SecondaryButton text="Log in" link="/signup" width="9rem" height="3rem" tab="1" />
 
               <PrimaryButton text="Sign up" link="/signup" width="9rem" height="3rem" />
             </VStack>
