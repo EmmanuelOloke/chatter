@@ -8,6 +8,7 @@ interface UserDocument extends Document {
   role: 'Writer' | 'Reader';
   email: string;
   password: string;
+  profileImage: string;
 }
 
 interface Methods {
@@ -45,6 +46,9 @@ const UserSchema = new Schema<UserDocument, {}, Methods>({
     type: String,
     required: [true, 'Password is required'],
     select: false,
+  },
+  profileImage: {
+    type: String,
   },
 });
 
