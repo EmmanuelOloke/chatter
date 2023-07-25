@@ -23,8 +23,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import { FcGoogle } from 'react-icons/fc';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -47,6 +46,9 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [signupError, setSignupError] = useState('');
   const [loginError, setLoginError] = useState('');
+
+  const searchParams = useSearchParams();
+  const [tab, setTab] = useState(Number(searchParams.get('tab') ?? 0));
 
   const [userLoginInfo, setUserLoginInfo] = useState({
     email: '',
@@ -120,7 +122,7 @@ const Signup = () => {
         </Flex>
 
         <Box w={{ base: '90vw', lg: '32.5rem' }} margin={{ base: '0 auto', lg: '0' }}>
-          <Tabs isFitted>
+          <Tabs isFitted defaultIndex={tab}>
             <TabList mb="1em">
               <Tab
                 textTransform="uppercase"
