@@ -6,6 +6,8 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { CacheProvider } from '@chakra-ui/next-js';
 import AuthProvider from '@/components/AuthProvider';
 
+import { Analytics } from '@vercel/analytics/react';
+
 const inter = Inter({ subsets: ['latin'] });
 
 // export const metadata = {
@@ -19,7 +21,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className} suppressHydrationWarning={true}>
         <CacheProvider>
           <ChakraProvider>
-            <AuthProvider>{children}</AuthProvider>
+            <AuthProvider>
+              {children} <Analytics />
+            </AuthProvider>
           </ChakraProvider>
         </CacheProvider>
       </body>
