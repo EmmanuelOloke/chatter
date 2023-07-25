@@ -3,6 +3,7 @@ export type ButtonComponentProps = {
   link: string;
   width: string;
   height: string;
+  tab?: '0' | '1';
   hasIcon?: boolean;
   disabled?: boolean;
 };
