@@ -8,6 +8,7 @@ interface UserDocument extends Document {
   role: 'Writer' | 'Reader';
   email: string;
   password: string;
+  createdAt: Date;
   profileImage: string;
 }
 
@@ -47,8 +48,13 @@ const UserSchema = new Schema<UserDocument, {}, Methods>({
     required: [true, 'Password is required'],
     select: false,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
   profileImage: {
     type: String,
+    default: 'https://picsum.photos/150',
   },
 });
 
