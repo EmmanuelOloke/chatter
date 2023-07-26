@@ -52,6 +52,8 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt(params) {
+      await connectToMongoDB();
+
       let user = await User.findOne({ email: params.token.email });
 
       if (!user) {
