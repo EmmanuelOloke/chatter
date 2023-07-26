@@ -72,6 +72,7 @@ export const authOptions: NextAuthOptions = {
         params.token.email = user.email;
         params.token.firstName = user.firstName;
         params.token.lastName = user.lastName;
+        params.token.picture = user.profileImage;
       }
       return params.token;
     },
@@ -82,6 +83,7 @@ export const authOptions: NextAuthOptions = {
         (session.user as { email: string }).email = token.email as string;
         (session.user as { firstName: string }).firstName = token.firstName as string;
         (session.user as { lastName: string }).lastName = token.lastName as string;
+        (session.user as { profileImage: string }).profileImage = token.picture as string;
       }
       return session;
     },
