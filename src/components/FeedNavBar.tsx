@@ -2,7 +2,6 @@
 
 import {
   Avatar,
-  Button,
   HStack,
   Popover,
   PopoverArrow,
@@ -15,7 +14,6 @@ import {
 } from '@chakra-ui/react';
 import SearchChatter from './SearchChatter';
 import NotificationsSvg from './SvgComponents/sidebar-svgs/NotificationsSvg';
-import { FiLogOut } from 'react-icons/fi';
 import { LogOutButton } from './LogOutButton';
 
 const FeedNavBar = () => {
