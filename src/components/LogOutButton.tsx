@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import React from 'react';
 import { FiLogOut } from 'react-icons/fi';
-import useLogOut from '../../lib/useLogOut';
+import useLogOut from '../../lib/custom-hooks/useLogOut';
 
 export const LogOutButton = () => {
   const { logOut } = useLogOut();
