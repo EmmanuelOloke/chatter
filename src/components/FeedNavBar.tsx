@@ -16,7 +16,22 @@ import SearchChatter from './SearchChatter';
 import NotificationsSvg from './SvgComponents/sidebar-svgs/NotificationsSvg';
 import { LogOutButton } from './LogOutButton';
 
+import { useSession } from 'next-auth/react';
+
 const FeedNavBar = () => {
+  const { data: session } = useSession();
+
+  const firstName = session?.user.firstName;
+  const email = session?.user.email;
+  const image = session?.user.image;
+
+  // const { firstName, email, image } = session?.user!;
+
+  const boldText = {
+    color: '#626262',
+    fontWeight: 'bold',
+  };
+
   return (
     <HStack
       p="0.5625rem 8.0625rem 0.5625rem 19.375rem"
@@ -28,16 +43,21 @@ const FeedNavBar = () => {
       <HStack gap={3}>
         <NotificationsSvg color="#000000" />
 
-        <Popover>
+        <Popover placement="top-end">
           <PopoverTrigger>
-            <Avatar name="Username" src="./assets/avatars/adebobola-muhydeen.jpeg" />
+            <Avatar name="Username" src={image} />
           </PopoverTrigger>
           <PopoverContent>
             <PopoverArrow />
             <PopoverCloseButton />
-            <PopoverHeader>Hello name</PopoverHeader>
+            <PopoverHeader>
+              Hey there, <i style={boldText}>{firstName}</i>
+            </PopoverHeader>
             <PopoverBody>
-              <Text>Email</Text>
+              <Text>
+                Signed in as: <i style={boldText}>{email}</i>
+              </Text>
+
               <LogOutButton />
             </PopoverBody>
           </PopoverContent>
