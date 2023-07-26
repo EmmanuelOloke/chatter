@@ -1,8 +1,22 @@
 'use client';
 
-import { Avatar, HStack } from '@chakra-ui/react';
+import {
+  Avatar,
+  Button,
+  HStack,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  Text,
+} from '@chakra-ui/react';
 import SearchChatter from './SearchChatter';
 import NotificationsSvg from './SvgComponents/sidebar-svgs/NotificationsSvg';
+import { FiLogOut } from 'react-icons/fi';
+import { LogOutButton } from './LogOutButton';
 
 const FeedNavBar = () => {
   return (
@@ -16,7 +30,20 @@ const FeedNavBar = () => {
       <HStack gap={3}>
         <NotificationsSvg color="#000000" />
 
-        <Avatar name="Username" src="./assets/avatars/adebobola-muhydeen.jpeg" />
+        <Popover>
+          <PopoverTrigger>
+            <Avatar name="Username" src="./assets/avatars/adebobola-muhydeen.jpeg" />
+          </PopoverTrigger>
+          <PopoverContent>
+            <PopoverArrow />
+            <PopoverCloseButton />
+            <PopoverHeader>Hello name</PopoverHeader>
+            <PopoverBody>
+              <Text>Email</Text>
+              <LogOutButton />
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
       </HStack>
     </HStack>
   );
