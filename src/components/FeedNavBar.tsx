@@ -23,9 +23,7 @@ const FeedNavBar = () => {
 
   const firstName = session?.user.firstName;
   const email = session?.user.email;
-  const image = session?.user.image;
-
-  // const { firstName, email, image } = session?.user!;
+  const profileImage = session?.user.profileImage;
 
   const boldText = {
     color: '#626262',
@@ -45,9 +43,9 @@ const FeedNavBar = () => {
 
         <Popover placement="top-end">
           <PopoverTrigger>
-            <Avatar name="Username" src={image} />
+            <Avatar _hover={{ cursor: 'pointer' }} name="Username" src={profileImage} />
           </PopoverTrigger>
-          <PopoverContent>
+          <PopoverContent _focus={{ outline: 'none' }}>
             <PopoverArrow />
             <PopoverCloseButton />
             <PopoverHeader>
