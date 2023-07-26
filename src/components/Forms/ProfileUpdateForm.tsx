@@ -1,11 +1,15 @@
 import {
+  Avatar,
+  AvatarBadge,
   Box,
   Button,
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
+  HStack,
   Heading,
+  IconButton,
   Input,
   InputGroup,
   InputRightElement,
@@ -14,7 +18,7 @@ import { Field, Formik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import ErrorAlert from '../ErrorAlert';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { EditIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 const ProfileUpdateForm = () => {
   const [userInfo, setUserInfo] = useState({
@@ -66,7 +70,22 @@ const ProfileUpdateForm = () => {
           {updateError && <ErrorAlert errorDescription={updateError} />}
 
           <FormControl>
-            <Flex flexDir="column" gap="1.5rem">
+            <Flex flexDir="column" gap="1.5rem" alignItems="center">
+              <HStack alignItems="flex-end" gap={0} position="relative">
+                <Avatar size="2xl" name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
+                <Box borderRadius="50%" position="absolute" right="0" backgroundColor="#543EE0">
+                  <IconButton
+                    size="md"
+                    borderRadius="50%"
+                    aria-label="Edit Profile Image"
+                    icon={<EditIcon />}
+                    color="#FFF"
+                    background="none"
+                    _hover={{ backgroundColor: '#7a67f4' }}
+                  />
+                </Box>
+              </HStack>
+
               <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
                 <FormControl
                   id="firstName"
