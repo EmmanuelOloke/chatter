@@ -122,7 +122,7 @@ const SideBar = () => {
 
         <Flex justifyContent="flex-end">
           <VStack w="9.5rem" alignItems="left">
-            <NextLink href="/feed" passHref>
+            <NextLink href="/account" passHref>
               <Flex justifyContent="left" alignItems="center" gap={3}>
                 <Icon viewBox="0 0 22 22">
                   <AccountSvg color="#626262" />
