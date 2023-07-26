@@ -21,9 +21,9 @@ import { useSession } from 'next-auth/react';
 const FeedNavBar = () => {
   const { data: session } = useSession();
 
-  const firstName = session?.user.firstName;
-  const email = session?.user.email;
-  const profileImage = session?.user.profileImage;
+  const firstName = session?.user?.firstName;
+  const email = session?.user?.email;
+  const profileImage = session?.user?.profileImage;
 
   const boldText = {
     color: '#626262',
