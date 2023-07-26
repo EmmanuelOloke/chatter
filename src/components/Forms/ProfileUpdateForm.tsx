@@ -13,6 +13,7 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Select,
 } from '@chakra-ui/react';
 import { Field, Formik } from 'formik';
 import { useState } from 'react';
@@ -130,6 +131,14 @@ const ProfileUpdateForm = () => {
                   h="3rem"
                 />
                 <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+              </FormControl>
+
+              <FormControl id="role">
+                <FormLabel>Role</FormLabel>
+                <Select defaultValue="Writer" h="3rem" name="role" onChange={formik.handleChange}>
+                  <option value="Writer">Writer</option>
+                  <option value="Reader">Reader</option>
+                </Select>
               </FormControl>
 
               <FormControl
