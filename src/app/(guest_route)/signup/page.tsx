@@ -29,6 +29,7 @@ import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import ErrorAlert from '@/components/ErrorAlert';
+import FormSubmitButton from '@/components/Buttons/FormSubmitButton';
 import { GoogleSignInButton, LinkedInSignInButton } from '@/components/AuthButtons';
 import { loginUser } from '../../../../lib/loginUser';
 
@@ -307,20 +308,11 @@ const Signup = () => {
                         </Flex>
 
                         <Flex>
-                          <Button
-                            variant="solid"
-                            backgroundColor="#543EE0"
-                            color="#FFF"
-                            size="lg"
-                            width="100%"
-                            height="3rem"
-                            _hover={{ backgroundColor: '#7a67f4' }}
-                            type="submit"
-                            isLoading={loading}
+                          <FormSubmitButton
+                            text="Create Account"
+                            loading={loading}
                             loadingText="Creating your account"
-                          >
-                            Create account
-                          </Button>
+                          />
                         </Flex>
 
                         <GoogleSignInButton text="Sign up with Google" />
@@ -405,20 +397,11 @@ const Signup = () => {
                             <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
                           </FormControl>
 
-                          <Button
-                            variant="solid"
-                            backgroundColor="#543EE0"
-                            color="#FFF"
-                            size="lg"
-                            width="100%"
-                            height="3rem"
-                            _hover={{ backgroundColor: '#7a67f4' }}
-                            type="submit"
-                            isLoading={loading}
+                          <FormSubmitButton
+                            text="Login"
+                            loading={loading}
                             loadingText="Logging you in"
-                          >
-                            Login
-                          </Button>
+                          />
 
                           <GoogleSignInButton text="Continue with Google" />
                           <LinkedInSignInButton text="Continue with LinkedIn" />
