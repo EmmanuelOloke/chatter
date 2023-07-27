@@ -1,6 +1,6 @@
 ### Chatter: A Haven for Text-Based Content
 
-Project under development. Stay tuned!
+### Project under development. Stay tuned!
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
