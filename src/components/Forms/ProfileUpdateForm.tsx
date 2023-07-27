@@ -20,6 +20,7 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import ErrorAlert from '../ErrorAlert';
 import { EditIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import FormSubmitButton from '../Buttons/FormSubmitButton';
 
 const ProfileUpdateForm = () => {
   const [userInfo, setUserInfo] = useState({
@@ -44,6 +45,10 @@ const ProfileUpdateForm = () => {
     <Formik
       initialValues={userInfo}
       validationSchema={Yup.object({
+        firstName: Yup.string()
+          .required('First name is required')
+          .min(2, 'First name is too short'),
+        lastName: Yup.string().required('Last name is required').min(2, 'Last name is too short'),
         email: Yup.string().required('Email is required').email('Invalid email address'),
         password: Yup.string()
           .required('Password is required')
@@ -59,15 +64,6 @@ const ProfileUpdateForm = () => {
     >
       {(formik) => (
         <Box as="form" onSubmit={formik.handleSubmit}>
-          <Heading
-            fontSize={{ base: '1.5rem', lg: '2rem' }}
-            fontWeight="500"
-            textAlign="center"
-            mb={5}
-          >
-            Profile Update Form
-          </Heading>
-
           {updateError && <ErrorAlert errorDescription={updateError} />}
 
           <FormControl>
@@ -197,20 +193,11 @@ const ProfileUpdateForm = () => {
                 <FormErrorMessage>{formik.errors.confirmPassword}</FormErrorMessage>
               </FormControl>
 
-              <Button
-                variant="solid"
-                backgroundColor="#543EE0"
-                color="#FFF"
-                size="lg"
-                width="100%"
-                height="3rem"
-                _hover={{ backgroundColor: '#7a67f4' }}
-                type="submit"
-                isLoading={loading}
-                loadingText="Logging you in"
-              >
-                Update Profile
-              </Button>
+              <FormSubmitButton
+                text="Update Profile"
+                loading={loading}
+                loadingText="Updating your profile"
+              />
             </Flex>
           </FormControl>
         </Box>
