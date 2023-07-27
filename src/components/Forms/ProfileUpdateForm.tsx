@@ -88,7 +88,7 @@ const ProfileUpdateForm = () => {
                   id="firstName"
                   isInvalid={Boolean(formik.errors.firstName && formik.touched.firstName)}
                 >
-                  <FormLabel>First name</FormLabel>
+                  <FormLabel>First Name</FormLabel>
                   <Field
                     as={Input}
                     name="firstName"
@@ -102,7 +102,7 @@ const ProfileUpdateForm = () => {
                   id="lastName"
                   isInvalid={Boolean(formik.errors.lastName && formik.touched.lastName)}
                 >
-                  <FormLabel>Last name</FormLabel>
+                  <FormLabel>Last Name</FormLabel>
                   <Field
                     as={Input}
                     name="lastName"
@@ -118,7 +118,7 @@ const ProfileUpdateForm = () => {
                 id="login-email-address"
                 isInvalid={Boolean(formik.errors.email && formik.touched.email)}
               >
-                <FormLabel>Email address</FormLabel>
+                <FormLabel>Email Address</FormLabel>
                 <Field
                   as={Input}
                   name="email"
