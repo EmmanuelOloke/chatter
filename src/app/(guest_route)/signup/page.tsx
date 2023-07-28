@@ -32,6 +32,8 @@ import ErrorAlert from '@/components/ErrorAlert';
 import FormSubmitButton from '@/components/Buttons/FormSubmitButton';
 import { GoogleSignInButton, LinkedInSignInButton } from '@/components/AuthButtons';
 import { loginUser } from '../../../../lib/loginUser';
+import { loginValidationSchema } from '../../../../lib/yup-validation-schemas/login-form';
+import { signupValidationSchema } from '../../../../lib/yup-validation-schemas/signup-form';
 
 const Signup = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -146,23 +148,7 @@ const Signup = () => {
               <TabPanel padding={0}>
                 <Formik
                   initialValues={userInfo}
-                  validationSchema={Yup.object({
-                    firstName: Yup.string()
-                      .required('First name is required')
-                      .min(2, 'First name is too short'),
-                    lastName: Yup.string()
-                      .required('Last name is required')
-                      .min(2, 'Last name is too short'),
-                    email: Yup.string()
-                      .required('Email is required')
-                      .email('Invalid email address'),
-                    password: Yup.string()
-                      .required('Password is required')
-                      .min(8, 'Password must be at least 8 characters'),
-                    confirmPassword: Yup.string()
-                      .oneOf([Yup.ref('password')], 'Passwords must match')
-                      .required('Confirm password is required'),
-                  })}
+                  validationSchema={signupValidationSchema}
                   onSubmit={(values, actions) => {
                     handleSignup(values);
                     actions.resetForm();
@@ -326,14 +312,7 @@ const Signup = () => {
               <TabPanel>
                 <Formik
                   initialValues={userLoginInfo}
-                  validationSchema={Yup.object({
-                    email: Yup.string()
-                      .required('Email is required')
-                      .email('Invalid email address'),
-                    password: Yup.string()
-                      .required('Password is required')
-                      .min(8, 'Password must be at least 8 characters'),
-                  })}
+                  validationSchema={loginValidationSchema}
                   onSubmit={(values, actions) => {
                     handleLogin(values);
                     actions.resetForm();
