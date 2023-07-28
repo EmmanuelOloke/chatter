@@ -43,7 +43,7 @@ const FeedNavBar = () => {
 
         <Popover placement="top-end">
           <PopoverTrigger>
-            <Avatar _hover={{ cursor: 'pointer' }} name="Username" src={profileImage} />
+            <Avatar _hover={{ cursor: 'pointer' }} name="Profile Image" src={profileImage} />
           </PopoverTrigger>
           <PopoverContent _focus={{ outline: 'none' }}>
             <PopoverArrow />
