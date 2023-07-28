@@ -18,12 +18,12 @@ import {
 } from '@chakra-ui/react';
 import { Field, Formik } from 'formik';
 import { useEffect, useState } from 'react';
-import * as Yup from 'yup';
 import ErrorAlert from '../ErrorAlert';
 import { EditIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import FormSubmitButton from '../Buttons/FormSubmitButton';
 import axios, { AxiosResponse } from 'axios';
 import { useSearchParams } from 'next/navigation';
+import { profileUpdateValidationSchema } from '../../../lib/yup-validation-schemas/profile-update-form';
 
 const ProfileUpdateForm = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -88,25 +88,20 @@ const ProfileUpdateForm = () => {
     }));
   };
 
+  const handleUpdate = (values: any) => {
+    console.log('we will make some updates here');
+  };
+
+  console.log(user);
+
   return (
     <Formik
       initialValues={user}
       enableReinitialize={true}
-      validationSchema={Yup.object({
-        firstName: Yup.string()
-          .required('First name is required')
-          .min(2, 'First name is too short'),
-        lastName: Yup.string().required('Last name is required').min(2, 'Last name is too short'),
-        email: Yup.string().required('Email is required').email('Invalid email address'),
-        password: Yup.string()
-          .required('Password is required')
-          .min(8, 'Password must be at least 8 characters'),
-        confirmPassword: Yup.string()
-          .required('Confirm password is required')
-          .oneOf([Yup.ref('password')], 'Passwords must match'),
-      })}
+      validationSchema={profileUpdateValidationSchema}
       onSubmit={(values) => {
-        // handleUpdate(values);
+        handleUpdate(values);
+        console.log('Are you there?');
       }}
     >
       {(formik) => (
