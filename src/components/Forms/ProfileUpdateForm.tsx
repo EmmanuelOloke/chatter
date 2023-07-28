@@ -14,24 +14,18 @@ import {
   InputGroup,
   InputRightElement,
   Select,
+  Text,
 } from '@chakra-ui/react';
 import { Field, Formik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import ErrorAlert from '../ErrorAlert';
 import { EditIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import FormSubmitButton from '../Buttons/FormSubmitButton';
+import axios, { AxiosResponse } from 'axios';
+import { useSearchParams } from 'next/navigation';
 
 const ProfileUpdateForm = () => {
-  const [userInfo, setUserInfo] = useState({
-    firstName: '',
-    lastName: '',
-    role: 'Writer',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
-
   const [passwordShow, setPasswordShow] = useState(false);
   const [confirmPasswordShow, setConfirmPasswordShow] = useState(false);
   const togglePasswordShow = () => setPasswordShow(!passwordShow);
@@ -41,9 +35,63 @@ const ProfileUpdateForm = () => {
 
   const [updateError, setUpdateError] = useState('');
 
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
+
+  type UserProps = {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    role: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+    profileImage: string;
+    _v: number;
+  };
+
+  const [user, setUser] = useState<UserProps>({
+    _id: '',
+    firstName: '',
+    lastName: '',
+    role: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    profileImage: '',
+    _v: 0,
+  });
+
+  const fetchData = async (id: string | null) => {
+    const response = await axios.get(`/api/user/${id}`);
+    const userData = response.data;
+    setUser(userData);
+  };
+
+  useEffect(() => {
+    fetchData(id);
+  }, [id]);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = event.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
+
   return (
     <Formik
-      initialValues={userInfo}
+      initialValues={user}
+      enableReinitialize={true}
       validationSchema={Yup.object({
         firstName: Yup.string()
           .required('First name is required')
@@ -57,9 +105,8 @@ const ProfileUpdateForm = () => {
           .required('Confirm password is required')
           .oneOf([Yup.ref('password')], 'Passwords must match'),
       })}
-      onSubmit={(values, actions) => {
-        // handleLogin(values);
-        actions.resetForm();
+      onSubmit={(values) => {
+        // handleUpdate(values);
       }}
     >
       {(formik) => (
@@ -69,7 +116,7 @@ const ProfileUpdateForm = () => {
           <FormControl>
             <Flex flexDir="column" gap="1.5rem" alignItems="center">
               <HStack alignItems="flex-end" gap={0} position="relative">
-                <Avatar size="2xl" name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
+                <Avatar size="2xl" name="Segun Adebayo" src={user.profileImage} />
                 <Box borderRadius="50%" position="absolute" right="0" backgroundColor="#543EE0">
                   <IconButton
                     size="md"
@@ -93,6 +140,8 @@ const ProfileUpdateForm = () => {
                     as={Input}
                     name="firstName"
                     placeholder="Tony"
+                    value={user.firstName}
+                    onChange={handleInputChange}
                     w={{ base: '100%', lg: '24rem' }}
                     h="3rem"
                   />
@@ -107,6 +156,8 @@ const ProfileUpdateForm = () => {
                     as={Input}
                     name="lastName"
                     placeholder="Stark"
+                    value={user.lastName}
+                    onChange={handleInputChange}
                     w={{ base: '100%', lg: '24rem' }}
                     h="3rem"
                   />
@@ -123,6 +174,8 @@ const ProfileUpdateForm = () => {
                   as={Input}
                   name="email"
                   type="email"
+                  value={user.email}
+                  onChange={handleInputChange}
                   placeholder="ironman@jarvis.com"
                   h="3rem"
                 />
@@ -131,7 +184,7 @@ const ProfileUpdateForm = () => {
 
               <FormControl id="role">
                 <FormLabel>Role</FormLabel>
-                <Select defaultValue="Writer" h="3rem" name="role" onChange={formik.handleChange}>
+                <Select value={user.role} h="3rem" name="role" onChange={handleSelectChange}>
                   <option value="Writer">Writer</option>
                   <option value="Reader">Reader</option>
                 </Select>
@@ -141,7 +194,7 @@ const ProfileUpdateForm = () => {
                 id="login-password"
                 isInvalid={Boolean(formik.errors.password && formik.touched.password)}
               >
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Reset Password</FormLabel>
                 <InputGroup size="md">
                   <Field
                     as={Input}
