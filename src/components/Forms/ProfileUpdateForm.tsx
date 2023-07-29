@@ -1,20 +1,16 @@
 import {
   Avatar,
-  AvatarBadge,
   Box,
-  Button,
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
   HStack,
-  Heading,
   IconButton,
   Input,
   InputGroup,
   InputRightElement,
   Select,
-  Text,
 } from '@chakra-ui/react';
 import { Field, Formik } from 'formik';
 import { useEffect, useState } from 'react';
