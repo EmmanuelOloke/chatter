@@ -17,7 +17,7 @@ import { useEffect, useState } from 'react';
 import ErrorAlert from '../ErrorAlert';
 import { EditIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import FormSubmitButton from '../Buttons/FormSubmitButton';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import { profileUpdateValidationSchema } from '../../../lib/yup-validation-schemas/profile-update-form';
 
