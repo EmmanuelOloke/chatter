@@ -1,8 +1,6 @@
 import User from '../../../../../../models/user';
 import { connectToMongoDB } from '../../../../../../lib/mongodb';
-import { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
 
 export async function GET(request: NextRequest, context: { params: { id: string } }) {
   await connectToMongoDB();
