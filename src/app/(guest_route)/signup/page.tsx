@@ -2,14 +2,12 @@
 
 import {
   Box,
-  Button,
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
   HStack,
   Heading,
-  Image,
   Input,
   InputGroup,
   InputRightElement,
@@ -26,7 +24,6 @@ import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Field, Formik } from 'formik';
-import * as Yup from 'yup';
 import axios from 'axios';
 import ErrorAlert from '@/components/ErrorAlert';
 import FormSubmitButton from '@/components/Buttons/FormSubmitButton';
