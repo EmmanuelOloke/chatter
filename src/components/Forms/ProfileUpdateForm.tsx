@@ -84,8 +84,19 @@ const ProfileUpdateForm = () => {
     }));
   };
 
-  const handleUpdate = (values: any) => {
-    console.log('we will make some updates here');
+  const handleUpdate = async (values: any) => {
+    setLoading(true);
+
+    try {
+      const response = await axios.put(`/api/user/${id}`, JSON.stringify(values));
+
+      if (response.status === 200) {
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    console.log('we will make some updates here', values);
   };
 
   console.log(user);
@@ -107,11 +118,7 @@ const ProfileUpdateForm = () => {
           <FormControl>
             <Flex flexDir="column" gap="1.5rem" alignItems="center">
               <HStack alignItems="flex-end" gap={0} position="relative">
-                <Avatar
-                  size="2xl"
-                  name={`${user.firstName} ${user.lastName}`}
-                  src={user.profileImage}
-                />
+                <Avatar size="2xl" name="Profile Image" src={user.profileImage} />
                 <Box borderRadius="50%" position="absolute" right="0" backgroundColor="#543EE0">
                   <IconButton
                     size="md"
