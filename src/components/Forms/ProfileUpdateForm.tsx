@@ -85,6 +85,16 @@ const ProfileUpdateForm = () => {
     }));
   };
 
+  const handleImageChange = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const imgElement = event.target as HTMLImageElement;
+    const imgSrc = imgElement.src;
+    const name = imgElement.alt;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: imgSrc,
+    }));
+  };
+
   const handleUpdate = async (values: any) => {
     setLoading(true);
 
@@ -123,8 +133,8 @@ const ProfileUpdateForm = () => {
               <HStack alignItems="flex-end" gap={0} position="relative">
                 <Avatar
                   size="2xl"
-                  name="Profile Image"
-                  onChange={handleInputChange}
+                  name="profileImage"
+                  onLoad={handleImageChange}
                   src={imageUrl ? imageUrl : user.profileImage}
                 />
                 {/* <Box borderRadius="50%" position="absolute" right="0" backgroundColor="#543EE0">
