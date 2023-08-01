@@ -19,7 +19,7 @@ export async function GET(request: NextRequest, context: { params: { id: string 
 export async function PUT(request: NextRequest, context: { params: { id: string } }) {
   try {
     const body = await request.json();
-    const { firstName, lastName, email, role, password } = body;
+    const { profileImage, firstName, lastName, email, role, password } = body;
 
     await connectToMongoDB();
 
@@ -29,7 +29,9 @@ export async function PUT(request: NextRequest, context: { params: { id: string 
     const hashedPassword = await bycrypt.hash(password, salt);
 
     const filter = { _id: userId };
-    const update = { $set: { firstName, lastName, email, role, password: hashedPassword } };
+    const update = {
+      $set: { profileImage, firstName, lastName, email, role, password: hashedPassword },
+    };
 
     const updated = await User.updateOne(filter, update);
 
