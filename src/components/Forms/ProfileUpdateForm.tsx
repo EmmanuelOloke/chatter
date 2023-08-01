@@ -20,6 +20,7 @@ import FormSubmitButton from '../Buttons/FormSubmitButton';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import { profileUpdateValidationSchema } from '../../../lib/yup-validation-schemas/profile-update-form';
+import ProfileImageUploadButton from '../Buttons/ProfileImageUploadButton';
 
 const ProfileUpdateForm = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -101,6 +102,8 @@ const ProfileUpdateForm = () => {
 
   console.log(user);
 
+  const [imageUrl, setImageUrl] = useState<string>('');
+
   return (
     <Formik
       initialValues={user}
@@ -118,8 +121,13 @@ const ProfileUpdateForm = () => {
           <FormControl>
             <Flex flexDir="column" gap="1.5rem" alignItems="center">
               <HStack alignItems="flex-end" gap={0} position="relative">
-                <Avatar size="2xl" name="Profile Image" src={user.profileImage} />
-                <Box borderRadius="50%" position="absolute" right="0" backgroundColor="#543EE0">
+                <Avatar
+                  size="2xl"
+                  name="Profile Image"
+                  onChange={handleInputChange}
+                  src={imageUrl ? imageUrl : user.profileImage}
+                />
+                {/* <Box borderRadius="50%" position="absolute" right="0" backgroundColor="#543EE0">
                   <IconButton
                     size="md"
                     borderRadius="50%"
@@ -129,7 +137,9 @@ const ProfileUpdateForm = () => {
                     background="none"
                     _hover={{ backgroundColor: '#7a67f4' }}
                   />
-                </Box>
+                </Box> */}
+
+                <ProfileImageUploadButton setImageUrl={setImageUrl} />
               </HStack>
 
               <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
