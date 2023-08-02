@@ -24,8 +24,6 @@ const PostContainer = () => {
 
   const { copyFormattedMdImageLink, isCopied } = useCopy();
 
-  console.log(postImageUrl);
-
   return (
     <VStack
       border="1px solid #D0D0D0"
