@@ -11,6 +11,7 @@ import {
   InputGroup,
   InputRightElement,
   Select,
+  VStack,
 } from '@chakra-ui/react';
 import { Field, Formik } from 'formik';
 import { useEffect, useState } from 'react';
@@ -31,6 +32,8 @@ const ProfileUpdateForm = () => {
   const [loading, setLoading] = useState(false);
 
   const [updateError, setUpdateError] = useState('');
+
+  const [imageUrl, setImageUrl] = useState<string>('');
 
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
@@ -110,10 +113,6 @@ const ProfileUpdateForm = () => {
     console.log('we will make some updates here', values);
   };
 
-  console.log(user);
-
-  const [imageUrl, setImageUrl] = useState<string>('');
-
   return (
     <Formik
       initialValues={user}
@@ -130,7 +129,7 @@ const ProfileUpdateForm = () => {
 
           <FormControl>
             <Flex flexDir="column" gap="1.5rem" alignItems="center">
-              <HStack alignItems="flex-end" gap={0} position="relative">
+              <VStack gap={5}>
                 <Avatar
                   size="2xl"
                   name="profileImage"
@@ -150,7 +149,7 @@ const ProfileUpdateForm = () => {
                 </Box> */}
 
                 <ProfileImageUploadButton setImageUrl={setImageUrl} />
-              </HStack>
+              </VStack>
 
               <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
                 <FormControl
