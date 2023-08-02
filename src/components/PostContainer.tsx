@@ -40,12 +40,16 @@ const PostContainer = () => {
         </HStack>
 
         <HStack>
-          <Input type="text" value={postImageMarkdownFormat} w="30rem" />
-          <CopyButton
-            handleClick={() => copyFormattedMdImageLink(postImageMarkdownFormat)}
-            text={isCopied ? 'Copied!' : 'Copy...'}
-            icon={<CopyIcon />}
-          />
+          {postImageUrl ? (
+            <>
+              <Input type="text" value={postImageMarkdownFormat} w="30rem" />
+              <CopyButton
+                handleClick={() => copyFormattedMdImageLink(postImageMarkdownFormat)}
+                text={isCopied ? 'Copied!' : 'Copy...'}
+                icon={<CopyIcon />}
+              />
+            </>
+          ) : null}
         </HStack>
       </VStack>
 
