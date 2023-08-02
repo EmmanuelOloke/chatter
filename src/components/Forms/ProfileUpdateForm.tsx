@@ -21,7 +21,7 @@ import FormSubmitButton from '../Buttons/FormSubmitButton';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import { profileUpdateValidationSchema } from '../../../lib/yup-validation-schemas/profile-update-form';
-import ProfileImageUploadButton from '../Buttons/ProfileImageUploadButton';
+import ImageUploadButton from '../Buttons/ImageUploadButton';
 
 const ProfileUpdateForm = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -148,7 +148,7 @@ const ProfileUpdateForm = () => {
                   />
                 </Box> */}
 
-                <ProfileImageUploadButton setImageUrl={setImageUrl} />
+                <ImageUploadButton setImageUrl={setImageUrl} />
               </VStack>
 
               <Flex gap={2} flexDir={{ base: 'column', lg: 'row' }}>
