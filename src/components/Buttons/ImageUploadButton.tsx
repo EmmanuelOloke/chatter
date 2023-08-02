@@ -11,7 +11,7 @@ interface ProfileImageUploadButtonProps {
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const ProfileImageUploadButton: React.FC<ProfileImageUploadButtonProps> = ({ setImageUrl }) => {
+const ImageUploadButton: React.FC<ProfileImageUploadButtonProps> = ({ setImageUrl }) => {
   return (
     <UploadButton
       endpoint="profileImage"
@@ -32,4 +32,4 @@ const ProfileImageUploadButton: React.FC<ProfileImageUploadButtonProps> = ({ set
   );
 };
 
-export default ProfileImageUploadButton;
+export default ImageUploadButton;
