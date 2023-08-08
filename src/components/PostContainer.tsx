@@ -1,15 +1,15 @@
 'use client';
 
-import { Box, Button, HStack, Input, VStack } from '@chakra-ui/react';
+import { Box, HStack, Input, VStack } from '@chakra-ui/react';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
 import dynamic from 'next/dynamic';
-import PrimaryButton from './PrimaryButton';
 import { useState } from 'react';
 import ImageUploadButton from './Buttons/ImageUploadButton';
 import { CopyIcon } from '@chakra-ui/icons';
 import { CopyButton } from './Buttons/CopyButton';
 import useCopy from '../../lib/custom-hooks/useCopy';
+import PublishButton from './Buttons/PublishButton';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
@@ -24,6 +24,10 @@ const PostContainer = () => {
 
   const { copyFormattedMdImageLink, isCopied } = useCopy();
 
+  const handleSubmit = (postContent: string | undefined): void => {
+    console.log(postContent);
+  };
+
   return (
     <VStack
       border="1px solid #D0D0D0"
@@ -36,7 +40,7 @@ const PostContainer = () => {
       <VStack alignItems="flex-start">
         <HStack w="60rem" justifyContent="space-between" alignItems="center" mt="3rem">
           <ImageUploadButton setImageUrl={setPostImageUrl} />
-          <PrimaryButton text="Publish" link="" width="12rem" height="3.5rem" disabled={!value} />
+          <PublishButton handleClick={() => handleSubmit(value)} disabled={!value} text="Publish" />
         </HStack>
 
         <HStack>
