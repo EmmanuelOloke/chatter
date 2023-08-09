@@ -11,6 +11,12 @@ import { CopyButton } from './Buttons/CopyButton';
 import useCopy from '../../lib/custom-hooks/useCopy';
 import PublishButton from './Buttons/PublishButton';
 
+import {
+  extractMetadataFromMarkdown,
+  markdownWithoutMetadata,
+  getTags,
+} from '../../lib/markdownUtilityFunctions';
+
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
 // const Markdown = dynamic(() => import('@uiw/react-markdown-preview').then((mod) => mod.default), {
@@ -36,41 +42,11 @@ const PostContainer = () => {
     console.log(postContent);
   };
 
-  const extractMetadataFromMarkdown = (markdown: string | undefined) => {
-    const charactersBetweenGroupedHyphens = /^---([\s\S]*?)---/;
-    const metadataMatched = markdown!.match(charactersBetweenGroupedHyphens);
-
-    if (!metadataMatched) {
-      return { error: `Wrong metadata format` };
-    }
-
-    const metadata = metadataMatched[1];
-
-    const metadataLines = metadata.split('\n');
-    const metadataObject = metadataLines.reduce((accumulator: MarkdownMetadata, line) => {
-      const [key, ...value] = line.split(':').map((part) => part.trim());
-
-      if (key) accumulator[key] = value[1] ? value.join(':') : value.join('');
-      return accumulator;
-    }, {});
-
-    return metadataObject;
-  };
-
-  const markdownWithoutMetadata = (markdown: string | undefined) => {
-    const withoutMetadata = markdown!.replace(/^---([\s\S]*?)---/gm, '');
-    return withoutMetadata.trim();
-  };
-
   const extractedMetadata = extractMetadataFromMarkdown(value);
   console.log(extractedMetadata);
+
   const metaDataRemoved = markdownWithoutMetadata(value);
   console.log(metaDataRemoved);
-
-  const getTags = (metaData: MarkdownMetadata) => {
-    const tagsArray = metaData.tags.split(', ');
-    return tagsArray;
-  };
 
   const tags = getTags(extractedMetadata);
   console.log(tags);
