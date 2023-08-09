@@ -6,6 +6,7 @@ interface PostDocument extends Document {
   content: string;
   author: string;
   datePosted: Date;
+  tags: string[];
   comments: {}[];
   likes: number;
   views: number;
@@ -31,6 +32,10 @@ const PostSchema = new Schema<PostDocument>({
   datePosted: {
     type: Date,
     default: Date.now(),
+  },
+  tags: {
+    type: [String],
+    required: true,
   },
   comments: [
     {
