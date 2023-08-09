@@ -25,6 +25,7 @@ const PostContainer = () => {
   const [value, setValue] = useState<string | undefined>(`---
   title:
   cover_image: https://direct_url_to_image.jpg
+  tags:
   ---`);
   const [postImageUrl, setPostImageUrl] = useState<string>('');
   const postImageMarkdownFormat = `![Image description](${postImageUrl})`;
@@ -61,10 +62,18 @@ const PostContainer = () => {
     return withoutMetadata.trim();
   };
 
-  const extractedStuff = extractMetadataFromMarkdown(value);
-  console.log(extractedStuff);
+  const extractedMetadata = extractMetadataFromMarkdown(value);
+  console.log(extractedMetadata);
   const metaDataRemoved = markdownWithoutMetadata(value);
   console.log(metaDataRemoved);
+
+  const getTags = (metaData: MarkdownMetadata) => {
+    const tagsArray = metaData.tags.split(', ');
+    return tagsArray;
+  };
+
+  const tags = getTags(extractedMetadata);
+  console.log(tags);
 
   return (
     <VStack
