@@ -40,10 +40,10 @@ const PostContainer = () => {
     const metadataMatched = markdown!.match(charactersBetweenGroupedHyphens);
 
     if (!metadataMatched) {
-      return { error: `this doesn't match anything` };
+      return { error: `Wrong metadata format` };
     }
 
-    const metadata = metadataMatched![1];
+    const metadata = metadataMatched[1];
 
     const metadataLines = metadata.split('\n');
     const metadataObject = metadataLines.reduce((accumulator: MarkdownMetadata, line) => {
@@ -56,8 +56,15 @@ const PostContainer = () => {
     return metadataObject;
   };
 
+  const markdownWithoutMetadata = (markdown: string | undefined) => {
+    const withoutMetadata = markdown!.replace(/^---([\s\S]*?)---/gm, '');
+    return withoutMetadata.trim();
+  };
+
   const extractedStuff = extractMetadataFromMarkdown(value);
   console.log(extractedStuff);
+  const metaDataRemoved = markdownWithoutMetadata(value);
+  console.log(metaDataRemoved);
 
   return (
     <VStack
