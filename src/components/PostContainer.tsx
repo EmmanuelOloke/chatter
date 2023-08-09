@@ -23,10 +23,6 @@ const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 //   ssr: false,
 // });
 
-type MarkdownMetadata = {
-  [key: string]: string;
-};
-
 const PostContainer = () => {
   const [value, setValue] = useState<string | undefined>(`---
   title:
