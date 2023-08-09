@@ -17,8 +17,15 @@ const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 //   ssr: false,
 // });
 
+type MarkdownMetadata = {
+  [key: string]: string;
+};
+
 const PostContainer = () => {
-  const [value, setValue] = useState<string | undefined>('');
+  const [value, setValue] = useState<string | undefined>(`---
+  title:
+  cover_image: https://direct_url_to_image.jpg
+  ---`);
   const [postImageUrl, setPostImageUrl] = useState<string>('');
   const postImageMarkdownFormat = `![Image description](${postImageUrl})`;
 
@@ -27,6 +34,30 @@ const PostContainer = () => {
   const handleSubmit = (postContent: string | undefined): void => {
     console.log(postContent);
   };
+
+  const extractMetadataFromMarkdown = (markdown: string | undefined) => {
+    const charactersBetweenGroupedHyphens = /^---([\s\S]*?)---/;
+    const metadataMatched = markdown!.match(charactersBetweenGroupedHyphens);
+
+    if (!metadataMatched) {
+      return { error: `this doesn't match anything` };
+    }
+
+    const metadata = metadataMatched![1];
+
+    const metadataLines = metadata.split('\n');
+    const metadataObject = metadataLines.reduce((accumulator: MarkdownMetadata, line) => {
+      const [key, ...value] = line.split(':').map((part) => part.trim());
+
+      if (key) accumulator[key] = value[1] ? value.join(':') : value.join('');
+      return accumulator;
+    }, {});
+
+    return metadataObject;
+  };
+
+  const extractedStuff = extractMetadataFromMarkdown(value);
+  console.log(extractedStuff);
 
   return (
     <VStack
