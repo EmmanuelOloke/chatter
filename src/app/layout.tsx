@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import { ChakraProvider } from '@chakra-ui/react';
 import { CacheProvider } from '@chakra-ui/next-js';
 import AuthProvider from '@/components/AuthProvider';
+import { UserContextProvider } from '@/contexts/UserContext';
 
 import { Analytics } from '@vercel/analytics/react';
 
@@ -22,7 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CacheProvider>
           <ChakraProvider>
             <AuthProvider>
-              {children} <Analytics />
+              <UserContextProvider>
+                {children} <Analytics />
+              </UserContextProvider>
             </AuthProvider>
           </ChakraProvider>
         </CacheProvider>
