@@ -24,10 +24,11 @@ import { RecentFeedCards } from '../../public/data/RecentFeedCards';
 import { useUserContext } from '@/contexts/UserContext';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 const FeedContainer = () => {
   const { data: session } = useSession();
-  const { user, setUser } = useUserContext();
+  const { setUser } = useUserContext();
 
   const userId = session?.user?.id as string;
 
@@ -37,7 +38,9 @@ const FeedContainer = () => {
     setUser(userData);
   };
 
-  fetchUserInfo(userId);
+  useEffect(() => {
+    fetchUserInfo(userId);
+  }, []);
 
   return (
     <VStack border="1px solid #D0D0D0" width="70rem" gap={10} pb="3rem" mb="3rem">
