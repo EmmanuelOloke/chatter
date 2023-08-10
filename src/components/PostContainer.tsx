@@ -41,8 +41,8 @@ const PostContainer = () => {
   const extractedMetadata = extractMetadataFromMarkdown(value);
   console.log(extractedMetadata);
 
-  const metaDataRemoved = markdownWithoutMetadata(value);
-  console.log(metaDataRemoved);
+  const rawMarkdownWithoutMetadata = markdownWithoutMetadata(value);
+  console.log(rawMarkdownWithoutMetadata);
 
   const tags = getTags(extractedMetadata);
   console.log(tags);
