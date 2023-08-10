@@ -16,14 +16,10 @@ import SearchChatter from './SearchChatter';
 import NotificationsSvg from './SvgComponents/sidebar-svgs/NotificationsSvg';
 import { LogOutButton } from './LogOutButton';
 
-import { useSession } from 'next-auth/react';
+import { useUserContext } from '@/contexts/UserContext';
 
 const FeedNavBar = () => {
-  const { data: session } = useSession();
-
-  const firstName = session?.user?.firstName;
-  const email = session?.user?.email;
-  const profileImage = session?.user?.profileImage;
+  const { user } = useUserContext();
 
   const boldText = {
     color: '#626262',
@@ -43,17 +39,17 @@ const FeedNavBar = () => {
 
         <Popover placement="top-end">
           <PopoverTrigger>
-            <Avatar _hover={{ cursor: 'pointer' }} name="Profile Image" src={profileImage} />
+            <Avatar _hover={{ cursor: 'pointer' }} name="Profile Image" src={user?.profileImage} />
           </PopoverTrigger>
           <PopoverContent _focus={{ outline: 'none' }}>
             <PopoverArrow />
             <PopoverCloseButton />
             <PopoverHeader>
-              Hey there, <i style={boldText}>{firstName}</i>
+              Hey there, <i style={boldText}>{user?.firstName}</i>
             </PopoverHeader>
             <PopoverBody>
               <Text>
-                Signed in as: <i style={boldText}>{email}</i>
+                Signed in as: <i style={boldText}>{user?.email}</i>
               </Text>
 
               <LogOutButton />
