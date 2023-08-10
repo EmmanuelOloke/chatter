@@ -12,7 +12,7 @@ interface PostDocument extends Document {
   views: number;
   coverImage: string;
   authorImage: string;
-  authorPosition: string;
+  authorProfession: string;
   timeToRead: string;
 }
 
@@ -69,7 +69,7 @@ const PostSchema = new Schema<PostDocument>({
     type: String,
     required: true,
   },
-  authorPosition: {
+  authorProfession: {
     type: String,
     required: true,
   },
