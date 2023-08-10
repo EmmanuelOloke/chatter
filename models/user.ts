@@ -8,6 +8,7 @@ interface UserDocument extends Document {
   role: 'Writer' | 'Reader';
   email: string;
   password: string;
+  profession: string;
   createdAt: Date;
   profileImage: string;
 }
@@ -47,6 +48,10 @@ const UserSchema = new Schema<UserDocument, {}, Methods>({
     type: String,
     required: [true, 'Password is required'],
     select: false,
+  },
+  profession: {
+    type: String,
+    default: '',
   },
   createdAt: {
     type: Date,
