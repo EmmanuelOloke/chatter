@@ -16,6 +16,9 @@ import {
   markdownWithoutMetadata,
   getTags,
 } from '../../lib/markdownUtilityFunctions';
+import { useUserContext } from '@/contexts/UserContext';
+import { useSession } from 'next-auth/react';
+import axios from 'axios';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
@@ -39,13 +42,10 @@ const PostContainer = () => {
   };
 
   const extractedMetadata = extractMetadataFromMarkdown(value);
-  console.log(extractedMetadata);
 
   const rawMarkdownWithoutMetadata = markdownWithoutMetadata(value);
-  console.log(rawMarkdownWithoutMetadata);
 
   const tags = getTags(extractedMetadata);
-  console.log(tags);
 
   return (
     <VStack
