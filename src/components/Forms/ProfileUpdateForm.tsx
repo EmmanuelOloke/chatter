@@ -44,6 +44,7 @@ const ProfileUpdateForm = () => {
     lastName: string;
     role: string;
     email: string;
+    profession: string;
     password: string;
     confirmPassword: string;
     profileImage: string;
@@ -56,6 +57,7 @@ const ProfileUpdateForm = () => {
     lastName: '',
     role: '',
     email: '',
+    profession: '',
     password: '',
     confirmPassword: '',
     profileImage: '',
@@ -136,17 +138,6 @@ const ProfileUpdateForm = () => {
                   onLoad={handleImageChange}
                   src={imageUrl ? imageUrl : user.profileImage}
                 />
-                {/* <Box borderRadius="50%" position="absolute" right="0" backgroundColor="#543EE0">
-                  <IconButton
-                    size="md"
-                    borderRadius="50%"
-                    aria-label="Edit Profile Image"
-                    icon={<EditIcon />}
-                    color="#FFF"
-                    background="none"
-                    _hover={{ backgroundColor: '#7a67f4' }}
-                  />
-                </Box> */}
 
                 <ImageUploadButton setImageUrl={setImageUrl} />
               </VStack>
@@ -209,6 +200,23 @@ const ProfileUpdateForm = () => {
                   <option value="Writer">Writer</option>
                   <option value="Reader">Reader</option>
                 </Select>
+              </FormControl>
+
+              <FormControl
+                id="profession"
+                isInvalid={Boolean(formik.errors.profession && formik.touched.profession)}
+              >
+                <FormLabel>Profession</FormLabel>
+                <Field
+                  as={Input}
+                  name="profession"
+                  type="text"
+                  value={user.profession}
+                  onChange={handleInputChange}
+                  placeholder="Profession"
+                  h="3rem"
+                />
+                <FormErrorMessage>{formik.errors.profession}</FormErrorMessage>
               </FormControl>
 
               <FormControl
