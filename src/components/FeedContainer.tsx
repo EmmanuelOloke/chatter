@@ -21,8 +21,24 @@ import CommentSvg from './SvgComponents/feed-cards-svgs/CommentSvg';
 import LikeSvg from './SvgComponents/feed-cards-svgs/LikeSvg';
 import AnalyticsSvg from './SvgComponents/sidebar-svgs/AnalyticsSvg';
 import { RecentFeedCards } from '../../public/data/RecentFeedCards';
+import { useUserContext } from '@/contexts/UserContext';
+import { useSession } from 'next-auth/react';
+import axios from 'axios';
 
 const FeedContainer = () => {
+  const { data: session } = useSession();
+  const { user, setUser } = useUserContext();
+
+  const userId = session?.user?.id as string;
+
+  const fetchUserInfo = async (id: string) => {
+    const response = await axios.get(`/api/user/${id}`);
+    const userData = response.data;
+    setUser(userData);
+  };
+
+  fetchUserInfo(userId);
+
   return (
     <VStack border="1px solid #D0D0D0" width="70rem" gap={10} pb="3rem" mb="3rem">
       <HStack gap="24rem" pt="1.38rem">
