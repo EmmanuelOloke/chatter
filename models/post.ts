@@ -13,7 +13,7 @@ interface PostDocument extends Document {
   coverImage: string;
   authorImage: string;
   authorProfession: string;
-  timeToRead: string;
+  timeToRead: number;
 }
 
 const PostSchema = new Schema<PostDocument>({
@@ -74,8 +74,9 @@ const PostSchema = new Schema<PostDocument>({
     required: true,
   },
   timeToRead: {
-    type: String,
+    type: Number,
     required: true,
+    default: 0,
   },
 });
 
