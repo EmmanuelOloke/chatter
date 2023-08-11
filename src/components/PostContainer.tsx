@@ -17,8 +17,8 @@ import {
   getTags,
 } from '../../lib/markdownUtilityFunctions';
 import { useUserContext } from '@/contexts/UserContext';
-import { useSession } from 'next-auth/react';
 import axios from 'axios';
+import { readingTime } from '../../lib/readingTime';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
@@ -27,7 +27,7 @@ const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 // });
 
 const PostContainer = () => {
-  const [value, setValue] = useState<string | undefined>(`---
+  const [rawMarkdownContent, setRawMarkdownContent] = useState<string | undefined>(`---
   title:
   cover_image: https://direct_url_to_image.jpg
   tags:
@@ -37,15 +37,38 @@ const PostContainer = () => {
 
   const { copyFormattedMdImageLink, isCopied } = useCopy();
 
-  const handleSubmit = (postContent: string | undefined): void => {
-    console.log(postContent);
+  const [loading, setLoading] = useState(false);
+
+  const { user } = useUserContext();
+
+  const extractedMetadata = extractMetadataFromMarkdown(rawMarkdownContent);
+  const { title, tags, cover_image } = extractedMetadata;
+
+  const rawMarkdownWithoutMetadata = markdownWithoutMetadata(rawMarkdownContent);
+  const timeItTakesToReadContent = readingTime(rawMarkdownWithoutMetadata);
+
+  const tagsArray = getTags(tags);
+
+  const postValues = {
+    title: title,
+    content: rawMarkdownWithoutMetadata,
+    author: `${user?.firstName} ${user?.lastName}`,
+    tags: tagsArray,
+    coverImage: cover_image,
+    authorImage: user?.profileImage,
+    authorProfession: user?.profession,
+    timeToRead: timeItTakesToReadContent,
   };
 
-  const extractedMetadata = extractMetadataFromMarkdown(value);
-
-  const rawMarkdownWithoutMetadata = markdownWithoutMetadata(value);
-
-  const tags = getTags(extractedMetadata);
+  const handleSubmit = async (values: any) => {
+    setLoading(true);
+    try {
+      const res = await axios.post('/api/post', JSON.stringify(values));
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <VStack
@@ -59,7 +82,12 @@ const PostContainer = () => {
       <VStack alignItems="flex-start">
         <HStack w="60rem" justifyContent="space-between" alignItems="center" mt="3rem">
           <ImageUploadButton setImageUrl={setPostImageUrl} />
-          <PublishButton handleClick={() => handleSubmit(value)} disabled={!value} text="Publish" />
+          <PublishButton
+            handleClick={() => handleSubmit(postValues)}
+            disabled={rawMarkdownWithoutMetadata.length < 50}
+            text="Publish"
+            loading={loading}
+          />
         </HStack>
 
         <HStack>
@@ -89,8 +117,8 @@ const PostContainer = () => {
             placeholder: 'Write your post here in markdown',
           }}
           height={600}
-          value={value}
-          onChange={setValue}
+          value={rawMarkdownContent}
+          onChange={setRawMarkdownContent}
         />
       </Box>
     </VStack>
