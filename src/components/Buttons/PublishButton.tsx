@@ -5,9 +5,10 @@ type PublishButtonProps = {
   text: string;
   handleClick: () => void;
   disabled: boolean;
+  loading: boolean;
 };
 
-const PublishButton = ({ text, handleClick, disabled }: PublishButtonProps) => {
+const PublishButton = ({ text, handleClick, disabled, loading }: PublishButtonProps) => {
   return (
     <Button
       onClick={handleClick}
@@ -19,6 +20,8 @@ const PublishButton = ({ text, handleClick, disabled }: PublishButtonProps) => {
       size="lg"
       _hover={{ backgroundColor: '#7A67F4' }}
       isDisabled={disabled}
+      isLoading={loading}
+      loadingText="Publishing..."
     >
       {text}
     </Button>
