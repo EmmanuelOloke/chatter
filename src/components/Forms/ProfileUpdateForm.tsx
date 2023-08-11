@@ -96,7 +96,6 @@ const ProfileUpdateForm = () => {
       validationSchema={profileUpdateValidationSchema}
       onSubmit={(values) => {
         handleUpdate(values);
-        console.log('Are you there?');
       }}
     >
       {(formik) => (
