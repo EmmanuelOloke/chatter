@@ -31,7 +31,7 @@ export const markdownWithoutMetadata = (markdown: string | undefined) => {
 };
 
 // Function to get tags as an array from the markdown metadata
-export const getTags = (metaData: MarkdownMetadata) => {
-  const tagsArray = metaData.tags.split(', ');
+export const getTags = (tags: string) => {
+  const tagsArray = tags.split(', ');
   return tagsArray;
 };
