@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-type UserProps = {
+export type UserProps = {
   _id: string;
   firstName: string;
   lastName: string;
