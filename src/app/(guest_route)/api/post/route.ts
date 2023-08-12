@@ -17,7 +17,10 @@ export async function POST(request: NextRequest, response: NextResponse) {
     return NextResponse.json({ error: 'Post must have a title' }, { status: 409 });
 
   if (content.length < 50)
-    return NextResponse.json({ error: 'Post content must be at 50 characters' }, { status: 409 });
+    return NextResponse.json(
+      { error: 'Post content must be at least 50 characters' },
+      { status: 409 }
+    );
 
   const post = await Post.create({ ...body });
 
