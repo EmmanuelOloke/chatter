@@ -12,12 +12,11 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { Field, Formik, FormikValues } from 'formik';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ErrorAlert from '../ErrorAlert';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import FormSubmitButton from '../Buttons/FormSubmitButton';
 import axios from 'axios';
-import { useSearchParams } from 'next/navigation';
 import { profileUpdateValidationSchema } from '../../../lib/yup-validation-schemas/profile-update-form';
 import ImageUploadButton from '../Buttons/ImageUploadButton';
 
