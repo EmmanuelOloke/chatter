@@ -38,3 +38,16 @@ export async function POST(request: NextRequest, response: NextResponse) {
     },
   });
 }
+
+export async function GET(request: NextRequest, response: NextResponse) {
+  if (request.method !== 'GET')
+    return NextResponse.json({ error: 'Method is not allowed' }, { status: 405 });
+
+  try {
+    await connectToMongoDB();
+    const posts = await Post.find();
+    return NextResponse.json(posts);
+  } catch (error) {
+    console.log(error);
+  }
+}
