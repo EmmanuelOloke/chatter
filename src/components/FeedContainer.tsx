@@ -24,11 +24,14 @@ import { RecentFeedCards } from '../../public/data/RecentFeedCards';
 import { useUserContext } from '@/contexts/UserContext';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { PostDocument } from '../../models/post';
 
 const FeedContainer = () => {
   const { data: session } = useSession();
   const { setUser } = useUserContext();
+
+  const [posts, setPosts] = useState([]);
 
   const userId = session?.user?.id as string;
 
@@ -38,8 +41,22 @@ const FeedContainer = () => {
     setUser(userData);
   };
 
+  const fetchAllPosts = async () => {
+    const response = await axios.get(`/api/post`);
+    const allPosts = response.data;
+    setPosts(allPosts);
+  };
+
+  const formatDate = (inputDate: Date) => {
+    const date = new Date(inputDate);
+
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+    return new Intl.DateTimeFormat('en-US', options).format(date);
+  };
+
   useEffect(() => {
     fetchUserInfo(userId);
+    fetchAllPosts();
   }, []);
 
   return (
@@ -68,9 +85,9 @@ const FeedContainer = () => {
 
         <TabPanels>
           <TabPanel p={0}>
-            {ForYouFeedCards.map((ForYouFeedCard) => (
+            {posts.map((post: PostDocument) => (
               <VStack
-                key={ForYouFeedCard.id}
+                key={post._id}
                 border="1px solid #D0D0D0"
                 _first={{ borderRadius: '0.5rem 0.5rem 0 0' }}
                 _last={{ borderRadius: '0 0 0.5rem 0.5rem' }}
@@ -80,19 +97,15 @@ const FeedContainer = () => {
                 pb="2rem"
               >
                 <HStack>
-                  <Avatar
-                    src={ForYouFeedCard.authorAvatar}
-                    name={ForYouFeedCard.authorName}
-                    size="lg"
-                  />
+                  <Avatar src={post.authorImage} name={post.author} size="lg" />
 
                   <VStack alignItems="flex-start">
                     <Text fontWeight="500" fontSize="1.5rem">
-                      {ForYouFeedCard.authorName}
+                      {post.author}
                     </Text>
                     <HStack color="#626262" fontSize="0.9rem">
-                      <Text> {ForYouFeedCard.authorJob}. </Text>
-                      <Text> {ForYouFeedCard.datePublished} </Text>
+                      <Text> {post.authorProfession}. </Text>
+                      <Text>{formatDate(post.datePosted)}</Text>
                     </HStack>
                   </VStack>
                 </HStack>
@@ -100,38 +113,40 @@ const FeedContainer = () => {
                 <VStack alignItems="flex-start">
                   <VStack alignItems="flex-start">
                     <Text fontWeight="500" fontSize="2rem">
-                      {ForYouFeedCard.articleTitle}
+                      {post.title}
                     </Text>
 
                     <HStack>
                       <ReadSvg color="black" />
 
                       <Text fontSize="0.9rem" color="#626262">
-                        {ForYouFeedCard.articleDuration}
+                        {post.timeToRead > 1
+                          ? `${post.timeToRead} minutes read`
+                          : `${post.timeToRead} minute read`}
                       </Text>
                     </HStack>
                   </VStack>
 
-                  <Text color="#626262" w="38rem">
-                    {ForYouFeedCard.articleExcerpt}
+                  <Text color="#626262" w="38rem" noOfLines={5}>
+                    {post.content}
                   </Text>
 
-                  <Image src={ForYouFeedCard.articleImage} alt={ForYouFeedCard.articleTitle} />
+                  <Image src={post.coverImage} alt={post.title} />
 
                   <HStack w="38rem" justifyContent="space-between">
                     <HStack>
                       <CommentSvg color="black" />
-                      <Text color="#626262">{ForYouFeedCard.articleComments}</Text>
+                      <Text color="#626262">{post.comments.length}</Text>
                     </HStack>
 
                     <HStack>
                       <LikeSvg color="black" />
-                      <Text color="#626262">{ForYouFeedCard.articleLikes}</Text>
+                      <Text color="#626262">{post.likes}</Text>
                     </HStack>
 
                     <HStack>
                       <AnalyticsSvg color="black" />
-                      <Text color="#626262">{ForYouFeedCard.articleViews}</Text>
+                      <Text color="#626262">{post.views}</Text>
                     </HStack>
                   </HStack>
                 </VStack>
