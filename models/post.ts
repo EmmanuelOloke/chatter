@@ -1,7 +1,7 @@
 import { Model, Schema, model, models } from 'mongoose';
 import { Document } from 'mongoose';
 
-interface PostDocument extends Document {
+export interface PostDocument extends Document {
   title: string;
   content: string;
   author: string;
