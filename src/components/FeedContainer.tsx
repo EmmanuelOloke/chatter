@@ -26,6 +26,7 @@ import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { PostDocument } from '../../models/post';
+import { formatDate } from '../../lib/formatDate';
 
 const FeedContainer = () => {
   const { data: session } = useSession();
@@ -45,13 +46,6 @@ const FeedContainer = () => {
     const response = await axios.get(`/api/post`);
     const allPosts = response.data;
     setPosts(allPosts);
-  };
-
-  const formatDate = (inputDate: Date) => {
-    const date = new Date(inputDate);
-
-    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
-    return new Intl.DateTimeFormat('en-US', options).format(date);
   };
 
   useEffect(() => {
