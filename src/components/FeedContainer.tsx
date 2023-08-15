@@ -4,6 +4,7 @@ import {
   Avatar,
   HStack,
   Image,
+  Spinner,
   Tab,
   TabIndicator,
   TabList,
@@ -51,6 +52,7 @@ const FeedContainer = () => {
   useEffect(() => {
     fetchUserInfo(userId);
     fetchAllPosts();
+    console.log(posts);
   }, []);
 
   return (
@@ -79,73 +81,86 @@ const FeedContainer = () => {
 
         <TabPanels>
           <TabPanel p={0}>
-            {posts.map((post: PostDocument) => (
-              <VStack
-                key={post._id}
-                border="1px solid #D0D0D0"
-                _first={{ borderRadius: '0.5rem 0.5rem 0 0' }}
-                _last={{ borderRadius: '0 0 0.5rem 0.5rem' }}
-                alignItems="flex-start"
-                pl="2rem"
-                pt="2rem"
-                pb="2rem"
-              >
-                <HStack>
-                  <Avatar src={post.authorImage} name={post.author} size="lg" />
+            {posts.length === 0 ? (
+              <HStack border="1px solid #D0D0D0" py="2rem" justifyContent="center">
+                <Text fontWeight="500">Loading Posts</Text>
+                <Spinner
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="#D0D0D0"
+                  color="#543EE0"
+                  size="md"
+                />
+              </HStack>
+            ) : (
+              posts.map((post: PostDocument) => (
+                <VStack
+                  key={post._id}
+                  border="1px solid #D0D0D0"
+                  _first={{ borderRadius: '0.5rem 0.5rem 0 0' }}
+                  _last={{ borderRadius: '0 0 0.5rem 0.5rem' }}
+                  alignItems="flex-start"
+                  pl="2rem"
+                  pt="2rem"
+                  pb="2rem"
+                >
+                  <HStack>
+                    <Avatar src={post.authorImage} name={post.author} size="lg" />
 
-                  <VStack alignItems="flex-start">
-                    <Text fontWeight="500" fontSize="1.5rem">
-                      {post.author}
-                    </Text>
-                    <HStack color="#626262" fontSize="0.9rem">
-                      <Text> {post.authorProfession}. </Text>
-                      <Text>{formatDate(post.datePosted)}</Text>
-                    </HStack>
-                  </VStack>
-                </HStack>
-
-                <VStack alignItems="flex-start">
-                  <VStack alignItems="flex-start">
-                    <Text fontWeight="500" fontSize="2rem">
-                      {post.title}
-                    </Text>
-
-                    <HStack>
-                      <ReadSvg color="black" />
-
-                      <Text fontSize="0.9rem" color="#626262">
-                        {post.timeToRead > 1
-                          ? `${post.timeToRead} minutes read`
-                          : `${post.timeToRead} minute read`}
+                    <VStack alignItems="flex-start">
+                      <Text fontWeight="500" fontSize="1.5rem">
+                        {post.author}
                       </Text>
+                      <HStack color="#626262" fontSize="0.9rem">
+                        <Text> {post.authorProfession}. </Text>
+                        <Text>{formatDate(post.datePosted)}</Text>
+                      </HStack>
+                    </VStack>
+                  </HStack>
+
+                  <VStack alignItems="flex-start">
+                    <VStack alignItems="flex-start">
+                      <Text fontWeight="500" fontSize="2rem">
+                        {post.title}
+                      </Text>
+
+                      <HStack>
+                        <ReadSvg color="black" />
+
+                        <Text fontSize="0.9rem" color="#626262">
+                          {post.timeToRead > 1
+                            ? `${post.timeToRead} minutes read`
+                            : `${post.timeToRead} minute read`}
+                        </Text>
+                      </HStack>
+                    </VStack>
+
+                    <Text color="#626262" w="38rem" noOfLines={5}>
+                      {post.content}
+                    </Text>
+
+                    <Image src={post.coverImage} alt={post.title} />
+
+                    <HStack w="38rem" justifyContent="space-between">
+                      <HStack>
+                        <CommentSvg color="black" />
+                        <Text color="#626262">{post.comments.length}</Text>
+                      </HStack>
+
+                      <HStack>
+                        <LikeSvg color="black" />
+                        <Text color="#626262">{post.likes}</Text>
+                      </HStack>
+
+                      <HStack>
+                        <AnalyticsSvg color="black" />
+                        <Text color="#626262">{post.views}</Text>
+                      </HStack>
                     </HStack>
                   </VStack>
-
-                  <Text color="#626262" w="38rem" noOfLines={5}>
-                    {post.content}
-                  </Text>
-
-                  <Image src={post.coverImage} alt={post.title} />
-
-                  <HStack w="38rem" justifyContent="space-between">
-                    <HStack>
-                      <CommentSvg color="black" />
-                      <Text color="#626262">{post.comments.length}</Text>
-                    </HStack>
-
-                    <HStack>
-                      <LikeSvg color="black" />
-                      <Text color="#626262">{post.likes}</Text>
-                    </HStack>
-
-                    <HStack>
-                      <AnalyticsSvg color="black" />
-                      <Text color="#626262">{post.views}</Text>
-                    </HStack>
-                  </HStack>
                 </VStack>
-              </VStack>
-            ))}
+              ))
+            )}
           </TabPanel>
 
           <TabPanel p={0}>
