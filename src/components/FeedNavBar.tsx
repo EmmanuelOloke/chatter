@@ -3,6 +3,7 @@
 import {
   Avatar,
   HStack,
+  Link,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -11,12 +12,14 @@ import {
   PopoverHeader,
   PopoverTrigger,
   Text,
+  VStack,
 } from '@chakra-ui/react';
 import SearchChatter from './SearchChatter';
 import NotificationsSvg from './SvgComponents/sidebar-svgs/NotificationsSvg';
 import { LogOutButton } from './LogOutButton';
 
 import { useUserContext } from '@/contexts/UserContext';
+import NextLink from 'next/link';
 
 const FeedNavBar = () => {
   const { user } = useUserContext();
@@ -48,11 +51,23 @@ const FeedNavBar = () => {
               Hey there, <i style={boldText}>{user?.firstName}</i>
             </PopoverHeader>
             <PopoverBody>
-              <Text>
-                Signed in as: <i style={boldText}>{user?.email}</i>
-              </Text>
+              <VStack alignItems="flex-start">
+                <Text>
+                  Signed in as: <i style={boldText}>{user?.email}</i>
+                </Text>
 
-              <LogOutButton />
+                <Link
+                  as={NextLink}
+                  href="/account"
+                  color="#626262"
+                  fontWeight="bold"
+                  _hover={{ cursor: 'pointer', color: '#543EE0' }}
+                >
+                  Edit Profile
+                </Link>
+
+                <LogOutButton />
+              </VStack>
             </PopoverBody>
           </PopoverContent>
         </Popover>
