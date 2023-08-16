@@ -7,11 +7,14 @@ export const LogOutButton = () => {
   const { logOut } = useLogOut();
   return (
     <Button
-      p={0}
+      px={3}
+      w="7rem"
       color="#626262"
+      fontWeight="bold"
       rightIcon={<FiLogOut />}
       background="none"
-      _hover={{ color: '#543EE0' }}
+      _hover={{ color: '#543EE0', border: '1px solid #543EE0' }}
+      border="1px solid #626262"
       onClick={logOut}
     >
       Log out
